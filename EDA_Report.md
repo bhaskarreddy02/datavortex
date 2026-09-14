@@ -1,5 +1,5 @@
 # Social Engine: Data Recovery & What We Learned
-### A plain-English report on how we restored the corrupted data and what actually drives engagement on the platform.
+### A report on how we restored the corrupted data and what actually drives engagement on the platform.
 
 ---
 
@@ -98,6 +98,7 @@ Looking at the 10,289 posts that contained readable text, we extracted the brand
 Putting all the pieces together gives us a clear picture of how the Social Engine works:
 
 ```text
+                     
                      THE SOCIAL ENGINE IN ONE MAP
                                    │
              ┌─────────────────────┼─────────────────────┐
@@ -116,6 +117,7 @@ Putting all the pieces together gives us a clear picture of how the Social Engin
                   ↓                ↓                ↓
              Likes (~50%)     Shares (~33%)    Comments (~17%)
              Easy agreement   Amplification    Debate & friction
+
 ```
 
 #### What should you actually do with these findings?
