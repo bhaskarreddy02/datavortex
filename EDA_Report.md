@@ -117,7 +117,7 @@ Putting all the pieces together gives us a clear picture of how the Social Engin
              Likes (~50%)     Shares (~33%)    Comments (~17%)
              Easy agreement   Amplification    Debate & friction
 ```
-
+![alt text](social_engine_structure.png)
 #### What should you actually do with these findings?
 
 1. **Stop paying for big follower counts.** Since audience size doesn't drive post engagement ($r = -0.0109$), partnering with 10 active micro-creators (<1k followers) will get you far more engagement per dollar than paying a single 40k-follower account.
