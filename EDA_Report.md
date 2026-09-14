@@ -23,6 +23,7 @@ When we first opened the files, the data was messy in four specific ways. Here i
 * **525 Negative Likes**: Some likes were negative numbers with `.0` on the end (like `-4812.0`). Their magnitudes were identical to normal positive likes (ranging from 1 to 5,000), meaning an intake script accidentally flipped the sign. We converted them back to positive numbers using `abs()`.
 * **3 Mixed Date Formats**: Timestamps were saved in three different ways—some as Unix seconds (like `1722528840`), some as ISO dates (`2024-10-15T14:30:00`), and some as European dates (`25-09-2024`). We converted every single one into standard UTC time.
 * **Broken Characters & Missing Fields**: We fixed HTML glitches (like `&amp;` instead of `&` and `Ã©` instead of `é`). For posts where the platform or text was truly blank, we labeled them `"UNKNOWN"` instead of guessing.
+* **1,814 Missing Likes Imputed via CatBoost + Residual Sampling**: 1,814 posts had missing like counts. We used a CatBoost Regressor trained on platform, language, country, post time, text content, shares, and comments, paired with empirical residual sampling (Predictive Mean Matching) to preserve the full uniform variance ($[0, 5000]$). All derived metrics (`total_engagement`, `like_ratio`, `share_ratio`, `comment_ratio`) were recalculated, and an audit column `likes_imputed` was recorded.
 
 ![Data Distributions](figures/metrics_distribution.png)
 *Figure 1: How the cleaned engagement numbers look. Likes, shares, and comments each follow clean, predictable ranges.*
@@ -132,6 +133,7 @@ Putting all the pieces together gives us a clear picture of how the Social Engin
 ### Summary Checklist
 - [x] Both raw data files preserved untouched.
 - [x] 360 duplicate rows removed; 525 sign-flipped likes corrected.
+- [x] 1,814 missing likes imputed using CatBoost + Empirical Residual Sampling with full variance preservation.
 - [x] All dates unified into standard UTC.
 - [x] Clean master dataset exported to `cleaned_dataset.csv`.
 - [x] Full interactive code available in `Social_Engine_Intake_Restoration.ipynb`.
