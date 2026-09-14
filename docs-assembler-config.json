@@ -2,10 +2,10 @@
     "organisation": "",
     "contact": "",
     "gitConfig": {
-        "owner": "",
-        "repo": "",
+        "owner": "bhaskarreddy02",
+        "repo": "datavortex",
         "branch": "master",
-        "publishUrl": ""
+        "publishUrl": "https://bhaskarreddy02.github.io/datavortex/"
     },
     "repoConfig": {
         "assetFolderName": "δ steps",
