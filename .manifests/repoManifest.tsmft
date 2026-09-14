@@ -1,0 +1,10 @@
+{
+    "migrations": {
+        "createdByDocsAssemblerVersion": "0.9.32",
+        "lastDocsAssemblerVersion": "0.9.32",
+        "migrations": []
+    },
+    "resources": {
+        "version": ""
+    }
+}
