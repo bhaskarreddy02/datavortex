@@ -1,0 +1,209 @@
+[
+  {
+    "raw_text": "URGENT: Someone just changed my email and password without my permission! Locked out of my profile! #AccountSecurity \ud83d\udea8",
+    "cleaned_text": "URGENT: Someone just changed my email and password without my permission! Locked out of my profile! AccountSecurity \ud83d\udea8",
+    "sentiment": {
+      "label": "Negative",
+      "confidence": 0.4955
+    },
+    "topic": {
+      "category": "Community_Discussion",
+      "confidence": 0.5723
+    },
+    "entities": [],
+    "embedding": {
+      "dimension": 384,
+      "norm": 1.0,
+      "vector_head": [
+        -0.0589,
+        0.0538,
+        0.0301,
+        0.0106,
+        0.0959,
+        0.0715
+      ]
+    },
+    "similar_posts": [
+      {
+        "text_id": "TXT_02471",
+        "text": "@user because my old account got suspended and than May 5th came around and Zayn followed me. Now I have 4.2K so thank you",
+        "similarity_score": 0.4827,
+        "sentiment": "Positive",
+        "topic": "Account_Security"
+      },
+      {
+        "text_id": "TXT_00593",
+        "text": "@user @user i seized some in our neighborhood on EID's 2nd day but faced some anger frm their families' side :( so gave thm back",
+        "similarity_score": 0.4715,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion"
+      },
+      {
+        "text_id": "TXT_04050",
+        "text": "@user @user i seized some in our neighborhood on EID's 2nd day but faced some anger frm their families' side :( so gave thm back",
+        "similarity_score": 0.4715,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion"
+      }
+    ]
+  },
+  {
+    "raw_text": "The latest camera update on iPhone 15 is AMAZING!!! \ud83d\ude2d\ud83d\udd25 loving the cinematic mode quality so much",
+    "cleaned_text": "The latest camera update on iPhone 15 is AMAZING!! \ud83d\ude2d\ud83d\udd25 loving the cinematic mode quality so much",
+    "sentiment": {
+      "label": "Positive",
+      "confidence": 0.8192
+    },
+    "topic": {
+      "category": "Technical_Issues",
+      "confidence": 0.8309
+    },
+    "entities": [
+      {
+        "entity": "iPhone 15",
+        "type": "PRODUCT"
+      }
+    ],
+    "embedding": {
+      "dimension": 384,
+      "norm": 1.0,
+      "vector_head": [
+        -0.0723,
+        0.0128,
+        0.0994,
+        -0.0831,
+        0.0289,
+        -0.0779
+      ]
+    },
+    "similar_posts": [
+      {
+        "text_id": "TXT_00006",
+        "text": "@user @user aaaah. Nokia used to make the Best Phone Cameras Ever.  Sadly I think those days may be past.",
+        "similarity_score": 0.5201,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion"
+      },
+      {
+        "text_id": "TXT_03952",
+        "text": "I'm so excited for the new iphone release tomorrow yas.",
+        "similarity_score": 0.4706,
+        "sentiment": "Positive",
+        "topic": "Community_Discussion"
+      },
+      {
+        "text_id": "TXT_06975",
+        "text": "\"Review: Motorola G 3rd Gen: With its great camera and funky design, the new Moto G is a fantastic budget smart...",
+        "similarity_score": 0.4688,
+        "sentiment": "Positive",
+        "topic": "Feature_Feedback"
+      }
+    ]
+  },
+  {
+    "raw_text": "App keeps freezing on the payment gateway screen. It threw a 504 gateway timeout error when submitting checkout.",
+    "cleaned_text": "App keeps freezing on the payment gateway screen. It threw a 504 gateway timeout error when submitting checkout.",
+    "sentiment": {
+      "label": "Neutral",
+      "confidence": 0.3657
+    },
+    "topic": {
+      "category": "Technical_Issues",
+      "confidence": 0.8628
+    },
+    "entities": [
+      {
+        "entity": "504",
+        "type": "CARDINAL"
+      }
+    ],
+    "embedding": {
+      "dimension": 384,
+      "norm": 1.0,
+      "vector_head": [
+        0.0184,
+        0.0352,
+        0.0159,
+        -0.0371,
+        -0.0341,
+        -0.0395
+      ]
+    },
+    "similar_posts": [
+      {
+        "text_id": "TXT_06839",
+        "text": "Turns out the issue we've been having w/ production is because some of our computers may not update time from Internet.",
+        "similarity_score": 0.3716,
+        "sentiment": "Negative",
+        "topic": "Technical_Issues"
+      },
+      {
+        "text_id": "TXT_03853",
+        "text": "@user I've had several problems with Amazon Prime - Customer service has been a nightmare especially if your items are from 3rd party vendor",
+        "similarity_score": 0.3581,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion"
+      },
+      {
+        "text_id": "TXT_03984",
+        "text": "@user moderate NAT and freezing issue. I'm used to the sweats!! I may buy a PS4 before release based on playability",
+        "similarity_score": 0.3536,
+        "sentiment": "Positive",
+        "topic": "Feature_Feedback"
+      }
+    ]
+  },
+  {
+    "raw_text": "Who else is watching the Lakers game tonight? D Wade is playing out of his mind! lololol",
+    "cleaned_text": "Who else is watching the Lakers game tonight? D Wade is playing out of his mind! lololol",
+    "sentiment": {
+      "label": "Neutral",
+      "confidence": 0.4335
+    },
+    "topic": {
+      "category": "Community_Discussion",
+      "confidence": 0.9732
+    },
+    "entities": [
+      {
+        "entity": "tonight",
+        "type": "TIME"
+      }
+    ],
+    "embedding": {
+      "dimension": 384,
+      "norm": 1.0,
+      "vector_head": [
+        0.0065,
+        -0.0754,
+        0.0017,
+        -0.1197,
+        -0.0342,
+        -0.0167
+      ]
+    },
+    "similar_posts": [
+      {
+        "text_id": "TXT_04298",
+        "text": "Anyone going yo watch the Lakers vs Heat game in Miami February?",
+        "similarity_score": 0.6451,
+        "sentiment": "Neutral",
+        "topic": "Community_Discussion"
+      },
+      {
+        "text_id": "TXT_03657",
+        "text": "Anyone going yo watch the Lakers vs Heat game in Miami February?",
+        "similarity_score": 0.6451,
+        "sentiment": "Neutral",
+        "topic": "Community_Discussion"
+      },
+      {
+        "text_id": "TXT_00015",
+        "text": "Lakers vs Heat on Jan. 17th! It\\u2019s D Wade\\u2019s b day... I feel bad he\\u2019ll lose on his birthday lololol",
+        "similarity_score": 0.6315,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion"
+      }
+    ]
+  }
+]

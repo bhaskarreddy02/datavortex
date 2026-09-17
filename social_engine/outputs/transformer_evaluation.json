@@ -1,0 +1,225 @@
+{
+  "dedicated_sentiment": {
+    "accuracy": 0.6244444444444445,
+    "macro_precision": 0.622187901124665,
+    "macro_recall": 0.6244905560679069,
+    "macro_f1": 0.6159707457260061,
+    "weighted_precision": 0.6222594940943628,
+    "weighted_recall": 0.6244444444444445,
+    "weighted_f1": 0.615991211805713,
+    "per_class": {
+      "Negative": {
+        "precision": 0.668769716088328,
+        "recall": 0.7043189368770764,
+        "f1_score": 0.686084142394822,
+        "support": 301
+      },
+      "Neutral": {
+        "precision": 0.5934579439252337,
+        "recall": 0.42333333333333334,
+        "f1_score": 0.49416342412451364,
+        "support": 300
+      },
+      "Positive": {
+        "precision": 0.6043360433604336,
+        "recall": 0.745819397993311,
+        "f1_score": 0.6676646706586826,
+        "support": 299
+      }
+    },
+    "confusion_matrix": [
+      [
+        212,
+        43,
+        46
+      ],
+      [
+        73,
+        127,
+        100
+      ],
+      [
+        32,
+        44,
+        223
+      ]
+    ],
+    "val_macro_f1": 0.6626504883691112,
+    "training_time_sec": 24.25
+  },
+  "dedicated_topic": {
+    "accuracy": 0.8066666666666666,
+    "macro_precision": 0.44386498267171315,
+    "macro_recall": 0.4364544372490871,
+    "macro_f1": 0.4340934753041456,
+    "weighted_precision": 0.8102414298418642,
+    "weighted_recall": 0.8066666666666666,
+    "weighted_f1": 0.8077259260136598,
+    "per_class": {
+      "Account_Security": {
+        "precision": 0.3333333333333333,
+        "recall": 0.23076923076923078,
+        "f1_score": 0.2727272727272727,
+        "support": 13
+      },
+      "Community_Discussion": {
+        "precision": 0.8913324708926261,
+        "recall": 0.8890322580645161,
+        "f1_score": 0.8901808785529716,
+        "support": 775
+      },
+      "Feature_Feedback": {
+        "precision": 0.2127659574468085,
+        "recall": 0.3333333333333333,
+        "f1_score": 0.2597402597402597,
+        "support": 30
+      },
+      "Technical_Issues": {
+        "precision": 0.3380281690140845,
+        "recall": 0.2926829268292683,
+        "f1_score": 0.3137254901960784,
+        "support": 82
+      }
+    },
+    "confusion_matrix": [
+      [
+        3,
+        10,
+        0,
+        0
+      ],
+      [
+        6,
+        689,
+        35,
+        45
+      ],
+      [
+        0,
+        18,
+        10,
+        2
+      ],
+      [
+        0,
+        56,
+        2,
+        24
+      ]
+    ],
+    "val_macro_f1": 0.4971509477577439,
+    "training_time_sec": 26.66
+  },
+  "multitask": {
+    "sentiment": {
+      "accuracy": 0.6244444444444445,
+      "macro_precision": 0.6202449961467181,
+      "macro_recall": 0.6243792214975228,
+      "macro_f1": 0.6208871918665485,
+      "weighted_precision": 0.62024287319963,
+      "weighted_recall": 0.6244444444444445,
+      "weighted_f1": 0.6209167263173624,
+      "per_class": {
+        "Negative": {
+          "precision": 0.6526946107784432,
+          "recall": 0.7242524916943521,
+          "f1_score": 0.6866141732283465,
+          "support": 301
+        },
+        "Neutral": {
+          "precision": 0.5534351145038168,
+          "recall": 0.48333333333333334,
+          "f1_score": 0.5160142348754448,
+          "support": 300
+        },
+        "Positive": {
+          "precision": 0.6546052631578947,
+          "recall": 0.6655518394648829,
+          "f1_score": 0.6600331674958541,
+          "support": 299
+        }
+      },
+      "confusion_matrix": [
+        [
+          218,
+          53,
+          30
+        ],
+        [
+          80,
+          145,
+          75
+        ],
+        [
+          36,
+          64,
+          199
+        ]
+      ]
+    },
+    "topic": {
+      "accuracy": 0.7344444444444445,
+      "macro_precision": 0.3903176149884487,
+      "macro_recall": 0.49402822328471424,
+      "macro_f1": 0.4203493942194275,
+      "weighted_precision": 0.8143306757588058,
+      "weighted_recall": 0.7344444444444445,
+      "weighted_f1": 0.766584728592577,
+      "per_class": {
+        "Account_Security": {
+          "precision": 0.17857142857142858,
+          "recall": 0.38461538461538464,
+          "f1_score": 0.24390243902439024,
+          "support": 13
+        },
+        "Community_Discussion": {
+          "precision": 0.908955223880597,
+          "recall": 0.7858064516129032,
+          "f1_score": 0.8429065743944637,
+          "support": 775
+        },
+        "Feature_Feedback": {
+          "precision": 0.24444444444444444,
+          "recall": 0.36666666666666664,
+          "f1_score": 0.29333333333333333,
+          "support": 30
+        },
+        "Technical_Issues": {
+          "precision": 0.22929936305732485,
+          "recall": 0.43902439024390244,
+          "f1_score": 0.301255230125523,
+          "support": 82
+        }
+      },
+      "confusion_matrix": [
+        [
+          5,
+          6,
+          0,
+          2
+        ],
+        [
+          23,
+          609,
+          31,
+          112
+        ],
+        [
+          0,
+          12,
+          11,
+          7
+        ],
+        [
+          0,
+          43,
+          3,
+          36
+        ]
+      ]
+    },
+    "joint_val_macro_f1": 0.5575402833493769,
+    "training_time_sec": 37.12,
+    "total_parameters": 149095
+  }
+}

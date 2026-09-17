@@ -1,0 +1,273 @@
+[
+  {
+    "query": "people complaining about account hacking and password reset",
+    "top_k": 3,
+    "results": [
+      {
+        "rank": 1,
+        "text_id": "TXT_01355",
+        "post_text": "\"When @user scams a poor innocent girl out of 20c, after she sat in Big Brother for 2 hours.  Your pathetic, hosting rights removed.\"",
+        "similarity_score": 0.3919,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "@user",
+            "label": "ORG"
+          },
+          {
+            "text": "20c",
+            "label": "DATE"
+          },
+          {
+            "text": "2 hours",
+            "label": "TIME"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "text_id": "TXT_04565",
+        "post_text": "@user this may surprise you Curtis but some people can care about more than one issue at a time. @user @user",
+        "similarity_score": 0.3864,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "@user",
+            "label": "ORG"
+          },
+          {
+            "text": "about more than one",
+            "label": "CARDINAL"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "text_id": "TXT_00593",
+        "post_text": "@user @user i seized some in our neighborhood on EID's 2nd day but faced some anger frm their families' side :( so gave thm back",
+        "similarity_score": 0.382,
+        "sentiment": "Negative",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "EID",
+            "label": "ORG"
+          },
+          {
+            "text": "2nd day",
+            "label": "DATE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "query": "app crashes and technical bugs on phone",
+    "top_k": 3,
+    "results": [
+      {
+        "rank": 1,
+        "text_id": "TXT_04253",
+        "post_text": "@user @user this is my 3rd Galaxy Note 4 and still glitchy I have to restart it about 3 times a day. What happened to quality?",
+        "similarity_score": 0.4476,
+        "sentiment": "Negative",
+        "topic": "Technical_Issues",
+        "entities": [
+          {
+            "text": "3rd",
+            "label": "ORDINAL"
+          },
+          {
+            "text": "4",
+            "label": "CARDINAL"
+          },
+          {
+            "text": "about 3",
+            "label": "CARDINAL"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "text_id": "TXT_00410",
+        "post_text": "@user I may relent and get one myself\\u002c but I hope it doesn\\u2019t come to that. Hopefully all the decent apps will get ported to android",
+        "similarity_score": 0.4465,
+        "sentiment": "Neutral",
+        "topic": "Technical_Issues",
+        "entities": []
+      },
+      {
+        "rank": 3,
+        "text_id": "TXT_01600",
+        "post_text": "I hate you @user u crash more then any other application Tho @user office ur close 2nd U both can share #firstplace 4 my dislike 2day",
+        "similarity_score": 0.4236,
+        "sentiment": "Negative",
+        "topic": "Technical_Issues",
+        "entities": [
+          {
+            "text": "@user",
+            "label": "ORG"
+          },
+          {
+            "text": "Tho @user",
+            "label": "PERSON"
+          },
+          {
+            "text": "2nd",
+            "label": "ORDINAL"
+          },
+          {
+            "text": "U",
+            "label": "NORP"
+          },
+          {
+            "text": "4",
+            "label": "CARDINAL"
+          },
+          {
+            "text": "2day",
+            "label": "DATE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "query": "loving the new features and design updates",
+    "top_k": 3,
+    "results": [
+      {
+        "rank": 1,
+        "text_id": "TXT_06652",
+        "post_text": "The only thing I'm looking forward to tomorrow is the new iPhone and iPad Pro",
+        "similarity_score": 0.454,
+        "sentiment": "Positive",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "tomorrow",
+            "label": "DATE"
+          },
+          {
+            "text": "iPhone",
+            "label": "ORG"
+          },
+          {
+            "text": "iPad Pro",
+            "label": "ORG"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "text_id": "TXT_06082",
+        "post_text": "The only thing I'm looking forward to tomorrow is the new iPhone and iPad Pro",
+        "similarity_score": 0.454,
+        "sentiment": "Positive",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "tomorrow",
+            "label": "DATE"
+          },
+          {
+            "text": "iPhone",
+            "label": "ORG"
+          },
+          {
+            "text": "iPad Pro",
+            "label": "ORG"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "text_id": "TXT_03952",
+        "post_text": "I'm so excited for the new iphone release tomorrow yas.",
+        "similarity_score": 0.4242,
+        "sentiment": "Positive",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "tomorrow",
+            "label": "DATE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "query": "basketball and sports match results",
+    "top_k": 3,
+    "results": [
+      {
+        "rank": 1,
+        "text_id": "TXT_06796",
+        "post_text": "catch NCAA Men\\u2019s Basketball Finals Game 3 today\\u002c 12:45pm live on TV5 and replay on AKTV right after the PBA 2nd Game. #SanBedaRedLions",
+        "similarity_score": 0.5252,
+        "sentiment": "Neutral",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "NCAA Men's Basketball Finals Game",
+            "label": "ORG"
+          },
+          {
+            "text": "12:45pm",
+            "label": "CARDINAL"
+          },
+          {
+            "text": "AKTV",
+            "label": "ORG"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "text_id": "TXT_05639",
+        "post_text": "The Daily Zap: Catch highlights from Thursday\\u2019s action in the NBA.",
+        "similarity_score": 0.5004,
+        "sentiment": "Neutral",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "Thursday",
+            "label": "DATE"
+          },
+          {
+            "text": "NBA",
+            "label": "ORG"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "text_id": "TXT_01058",
+        "post_text": "ESPN stats from Sco v Ireland yesterday. Haven't watched the game yet but the stats tell one story",
+        "similarity_score": 0.4685,
+        "sentiment": "Neutral",
+        "topic": "Community_Discussion",
+        "entities": [
+          {
+            "text": "ESPN",
+            "label": "ORG"
+          },
+          {
+            "text": "Sco v Ireland",
+            "label": "GPE"
+          },
+          {
+            "text": "yesterday",
+            "label": "DATE"
+          },
+          {
+            "text": "one",
+            "label": "CARDINAL"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,296 @@
+{
+  "n_clusters": 6,
+  "silhouette_score": 0.0258,
+  "clusters": {
+    "Topic_0": {
+      "cluster_id": 0,
+      "post_count": 1296,
+      "percentage": 14.4,
+      "representative_keywords": [
+        "user",
+        "user user",
+        "tomorrow",
+        "just",
+        "day",
+        "1st",
+        "going",
+        "time",
+        "like",
+        "3rd"
+      ],
+      "representative_posts": [
+        {
+          "text_id": "TXT_02024",
+          "post_text": "@user @user will be presenting on the 4th I will come we talk about some stuff",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_03024",
+          "post_text": "@user Mr. Monday night just made my Thursday night\\u2019!! @user #mohrstories",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_00273",
+          "post_text": "Don't miss our reader offer to see The Who at the NIA in tomorrow's @user @user",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        }
+      ]
+    },
+    "Topic_1": {
+      "cluster_id": 1,
+      "post_count": 2156,
+      "percentage": 23.96,
+      "representative_keywords": [
+        "tomorrow",
+        "user",
+        "day",
+        "going",
+        "night",
+        "friday",
+        "saturday",
+        "just",
+        "sunday",
+        "monday"
+      ],
+      "representative_posts": [
+        {
+          "text_id": "TXT_07907",
+          "post_text": "Who's going to Sam Smith's concert tomorrow??",
+          "sentiment_label": "Neutral",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_06057",
+          "post_text": "Carnival tomorrow. Then going to mcdonalds with Deztanee and Sam after. \\m/",
+          "sentiment_label": "Neutral",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_02281",
+          "post_text": "Imaaa be gone til Sunday the 19th ! :)",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        }
+      ]
+    },
+    "Topic_2": {
+      "cluster_id": 2,
+      "post_count": 1589,
+      "percentage": 17.66,
+      "representative_keywords": [
+        "user",
+        "muslims",
+        "user user",
+        "islam",
+        "1st",
+        "obama",
+        "just",
+        "israel",
+        "haram",
+        "boko haram"
+      ],
+      "representative_posts": [
+        {
+          "text_id": "TXT_00740",
+          "post_text": "@user Bernie's there like crossing his fingers that Saudi Arabia is going to wake up tomorrow and decide to take out ISIS",
+          "sentiment_label": "Neutral",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_01343",
+          "post_text": "@user @user  Obama will continue to flood America with Muslims. It may be too late to stop the fall of America",
+          "sentiment_label": "Negative",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_08191",
+          "post_text": "@user @user  Obama will continue to flood America with Muslims. It may be too late to stop the fall of America",
+          "sentiment_label": "Negative",
+          "topic_category": "Community_Discussion"
+        }
+      ]
+    },
+    "Topic_3": {
+      "cluster_id": 3,
+      "post_count": 1974,
+      "percentage": 21.93,
+      "representative_keywords": [
+        "user",
+        "just",
+        "tomorrow",
+        "like",
+        "friday",
+        "album",
+        "1st",
+        "new",
+        "night",
+        "time"
+      ],
+      "representative_posts": [
+        {
+          "text_id": "TXT_07509",
+          "post_text": "Can't wait for Ed Sheeran tomorrow with all my bb's",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_02012",
+          "post_text": "Can't wait for Ed Sheeran tomorrow with all my bb's",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_07313",
+          "post_text": "am I the only one who could care less about the Ed Sheeran concert tomorrow?",
+          "sentiment_label": "Negative",
+          "topic_category": "Community_Discussion"
+        }
+      ]
+    },
+    "Topic_4": {
+      "cluster_id": 4,
+      "post_count": 465,
+      "percentage": 5.17,
+      "representative_keywords": [
+        "user",
+        "wwe",
+        "raw",
+        "rousey",
+        "seth",
+        "rollins",
+        "cena",
+        "seth rollins",
+        "mayweather",
+        "floyd"
+      ],
+      "representative_posts": [
+        {
+          "text_id": "TXT_01120",
+          "post_text": "Brock Lesnar on sportscenter talking about his fight with the Undertaker this Sunday.... What a time to be alive",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_07317",
+          "post_text": "Can't wait to see what's going to happen between The Undertaker and Brock Lesnar on tonight's @user #RAW before #SummerSlam this Sunday",
+          "sentiment_label": "Positive",
+          "topic_category": "Technical_Issues"
+        },
+        {
+          "text_id": "TXT_05998",
+          "post_text": "Monday night brawl with Undertaker and Brock Lesnar",
+          "sentiment_label": "Neutral",
+          "topic_category": "Community_Discussion"
+        }
+      ]
+    },
+    "Topic_5": {
+      "cluster_id": 5,
+      "post_count": 1520,
+      "percentage": 16.89,
+      "representative_keywords": [
+        "user",
+        "game",
+        "1st",
+        "tomorrow",
+        "2nd",
+        "sunday",
+        "3rd",
+        "just",
+        "david",
+        "night"
+      ],
+      "representative_posts": [
+        {
+          "text_id": "TXT_03770",
+          "post_text": "I just hope Ian Bennett is first out of the selection machine tonight #terrierball #htafc #dontfancyArfieldingoal",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_08732",
+          "post_text": "David Price going tomorrow for a franchise win record? Sounds good.",
+          "sentiment_label": "Positive",
+          "topic_category": "Community_Discussion"
+        },
+        {
+          "text_id": "TXT_00621",
+          "post_text": "David Wright grounds out in the 9th. Was 2-for-5 today.",
+          "sentiment_label": "Negative",
+          "topic_category": "Community_Discussion"
+        }
+      ]
+    }
+  },
+  "cross_tabulation_counts": {
+    "Account_Security": {
+      "0": 25,
+      "1": 29,
+      "2": 24,
+      "3": 44,
+      "4": 1,
+      "5": 13
+    },
+    "Community_Discussion": {
+      "0": 1080,
+      "1": 1909,
+      "2": 1372,
+      "3": 1669,
+      "4": 411,
+      "5": 1311
+    },
+    "Feature_Feedback": {
+      "0": 35,
+      "1": 47,
+      "2": 83,
+      "3": 69,
+      "4": 14,
+      "5": 49
+    },
+    "Technical_Issues": {
+      "0": 156,
+      "1": 171,
+      "2": 110,
+      "3": 192,
+      "4": 39,
+      "5": 147
+    }
+  },
+  "cross_tabulation_proportions": {
+    "Account_Security": {
+      "0": 1.9300000000000002,
+      "1": 1.35,
+      "2": 1.51,
+      "3": 2.23,
+      "4": 0.22,
+      "5": 0.86
+    },
+    "Community_Discussion": {
+      "0": 83.33,
+      "1": 88.53999999999999,
+      "2": 86.33999999999999,
+      "3": 84.55,
+      "4": 88.39,
+      "5": 86.25
+    },
+    "Feature_Feedback": {
+      "0": 2.7,
+      "1": 2.18,
+      "2": 5.220000000000001,
+      "3": 3.5000000000000004,
+      "4": 3.01,
+      "5": 3.2199999999999998
+    },
+    "Technical_Issues": {
+      "0": 12.04,
+      "1": 7.93,
+      "2": 6.92,
+      "3": 9.73,
+      "4": 8.39,
+      "5": 9.67
+    }
+  }
+}

@@ -1,0 +1,11 @@
+Model,Task,Accuracy,Macro F1,Weighted F1,Training Time
+Logistic Regression (TF-IDF),Sentiment,0.5956,0.5953,0.5953,1.2s
+Linear SVM (TF-IDF),Sentiment,0.5844,0.583,0.583,2.4s
+Complement Naive Bayes (TF-IDF),Sentiment,0.5789,0.5747,0.5746,0.3s
+Dedicated Transformer (MiniLM),Sentiment,0.6244,0.616,0.616,24.25s
+Multi-Task Transformer (Joint),Sentiment,0.6244,0.6209,0.6209,37.12s (Joint)
+Logistic Regression (Class Weighted),Topic,0.92,0.6476,0.9102,1.4s
+Linear SVM (Class Weighted),Topic,0.9233,0.5914,0.9064,2.8s
+Complement Naive Bayes (TF-IDF),Topic,0.88,0.4198,0.8557,0.3s
+Dedicated Transformer (MiniLM),Topic,0.8067,0.4341,0.8077,26.66s
+Multi-Task Transformer (Joint),Topic,0.7344,0.4203,0.7666,37.12s (Joint)

@@ -1,0 +1,170 @@
+{
+  "num_rows": 9000,
+  "num_cols": 4,
+  "columns": [
+    "text_id",
+    "post_text",
+    "sentiment_label",
+    "topic_category"
+  ],
+  "dtypes": {
+    "text_id": "str",
+    "post_text": "str",
+    "sentiment_label": "str",
+    "topic_category": "str"
+  },
+  "missing_values": {
+    "text_id": 0,
+    "post_text": 0,
+    "sentiment_label": 0,
+    "topic_category": 0
+  },
+  "missing_percentage": {
+    "text_id": 0.0,
+    "post_text": 0.0,
+    "sentiment_label": 0.0,
+    "topic_category": 0.0
+  },
+  "duplicate_entire_rows": 0,
+  "duplicate_text_id": 0,
+  "duplicate_post_text": 1100,
+  "unique_sentiment_labels": [
+    "Negative",
+    "Positive",
+    "Neutral"
+  ],
+  "sentiment_distribution": {
+    "Negative": 3000,
+    "Positive": 3000,
+    "Neutral": 3000
+  },
+  "sentiment_distribution_pct": {
+    "Negative": 33.33,
+    "Positive": 33.33,
+    "Neutral": 33.33
+  },
+  "unique_topic_categories": [
+    "Community_Discussion",
+    "Account_Security",
+    "Feature_Feedback",
+    "Technical_Issues"
+  ],
+  "topic_distribution": {
+    "Community_Discussion": 7752,
+    "Technical_Issues": 815,
+    "Feature_Feedback": 297,
+    "Account_Security": 136
+  },
+  "topic_distribution_pct": {
+    "Community_Discussion": 86.13,
+    "Technical_Issues": 9.06,
+    "Feature_Feedback": 3.3,
+    "Account_Security": 1.51
+  },
+  "char_length_stats": {
+    "min": 25,
+    "max": 180,
+    "mean": 107.98577777777778,
+    "median": 113.0,
+    "std": 26.1049625946818,
+    "p25": 91.0,
+    "p75": 129.0,
+    "p95": 142.0,
+    "p99": 150.0
+  },
+  "word_count_stats": {
+    "min": 4,
+    "max": 35,
+    "mean": 19.47211111111111,
+    "median": 20.0,
+    "std": 4.933866445598127,
+    "p25": 16.0,
+    "p75": 23.0,
+    "p95": 27.0,
+    "p99": 29.0
+  },
+  "extremely_short_posts_count": 0,
+  "extremely_short_samples": [],
+  "extremely_long_posts_count": 0,
+  "extremely_long_samples": [],
+  "social_patterns": {
+    "posts_with_urls": 16,
+    "pct_urls": 0.18,
+    "posts_with_mentions": 2659,
+    "pct_mentions": 29.54,
+    "posts_with_hashtags": 1573,
+    "pct_hashtags": 17.48,
+    "posts_with_html_entities": 360,
+    "pct_html_entities": 4.0,
+    "posts_with_escaped_unicode": 1092,
+    "pct_escaped_unicode": 12.13,
+    "posts_with_repeated_chars": 2025,
+    "pct_repeated_chars": 22.5,
+    "posts_with_emojis": 0,
+    "pct_emojis": 0.0
+  },
+  "noise_samples": {
+    "escaped_unicode_examples": [
+      "Lakers vs Heat on Jan. 17th! It\\u2019s D Wade\\u2019s b day... I feel bad he\\u2019ll lose on his birthday lololol",
+      "Iqaluit just wouldn\\u2019t be Iqaluit without the drunks screaming at each other on a Saturday morning ... depressing buggers.",
+      "I\\u2019m going to the Duke game on Saturday. Haha. DUKE. What\\u2019a joke they are.",
+      "Just bought my ticket to go m watch the Romeo Santos concert in theater. Nov 5 needs to hurry up!! I\\u2019m so excited"
+    ],
+    "html_entity_examples": [
+      "@user Hi! My bias is KAI bc he stole my heart the 1st tym I saw him in Growl. He is my 1st love in KPOP &amp; it's not changing til now",
+      "@user - congratulations on the 20th Birth Anniversary of @user 95.  20 years since we've come to love you (&amp; backward compatibility)",
+      "\"BREAKING NEWS: Bobby, Chloe-Jasmine &amp; Stevie, Gail and Chris all face eviction from the Celebrity Big Brother house on Tuesday #cbb #CBBBOTS\"",
+      "\"I kind of had a good guy to look up to, he was a 6th rd draft pick &amp; he's the greatest quarterback of all-time, #Texans Hoyer on Tom Brady\""
+    ],
+    "repeated_char_examples": [
+      "\"Sicily may form grand coalition, Italian UDC Party leader: (AGI) Rome - On Monday Rocco Buttiglione, the leader ...",
+      "@user @user aaaah. Nokia used to make the Best Phone Cameras Ever.  Sadly I think those days may be past.",
+      "\"When gaza march out pon the battlefield it's a funeral... israel burial, gazaaa me seh\"",
+      "@user If all of the Kpop fans came after 1d people will wake up tomorrow and be like \"\"who is 1d?\"\"\""
+    ],
+    "emoji_examples": []
+  },
+  "duplicate_post_text_total_rows": 2087,
+  "duplicate_conflicting_sentiment": 0,
+  "duplicate_conflicting_topic": 0,
+  "topic_sentiment_crosstab_counts": {
+    "Negative": {
+      "Account_Security": 34,
+      "Community_Discussion": 2583,
+      "Feature_Feedback": 119,
+      "Technical_Issues": 264
+    },
+    "Neutral": {
+      "Account_Security": 47,
+      "Community_Discussion": 2623,
+      "Feature_Feedback": 104,
+      "Technical_Issues": 226
+    },
+    "Positive": {
+      "Account_Security": 55,
+      "Community_Discussion": 2546,
+      "Feature_Feedback": 74,
+      "Technical_Issues": 325
+    }
+  },
+  "topic_sentiment_crosstab_proportions": {
+    "Negative": {
+      "Account_Security": 25.0,
+      "Community_Discussion": 33.32,
+      "Feature_Feedback": 40.07,
+      "Technical_Issues": 32.39
+    },
+    "Neutral": {
+      "Account_Security": 34.56,
+      "Community_Discussion": 33.839999999999996,
+      "Feature_Feedback": 35.02,
+      "Technical_Issues": 27.73
+    },
+    "Positive": {
+      "Account_Security": 40.44,
+      "Community_Discussion": 32.84,
+      "Feature_Feedback": 24.92,
+      "Technical_Issues": 39.879999999999995
+    }
+  }
+}

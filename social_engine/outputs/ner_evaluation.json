@@ -1,0 +1,1035 @@
+{
+  "total_posts_evaluated": 3000,
+  "total_entities_detected": 9081,
+  "entity_type_distribution": {
+    "DATE": 2012,
+    "PERSON": 2245,
+    "TIME": 355,
+    "FAC": 97,
+    "NORP": 226,
+    "ORG": 2139,
+    "GPE": 678,
+    "ORDINAL": 459,
+    "CARDINAL": 467,
+    "WORK_OF_ART": 131,
+    "PRODUCT": 75,
+    "MONEY": 35,
+    "LOC": 56,
+    "EVENT": 57,
+    "LAW": 19,
+    "PERCENT": 14,
+    "QUANTITY": 12,
+    "LANGUAGE": 4
+  },
+  "top_entities_by_type": {
+    "DATE": [
+      {
+        "entity": "tomorrow",
+        "count": 366
+      },
+      {
+        "entity": "Friday",
+        "count": 108
+      },
+      {
+        "entity": "Sunday",
+        "count": 99
+      },
+      {
+        "entity": "Monday",
+        "count": 84
+      },
+      {
+        "entity": "today",
+        "count": 77
+      },
+      {
+        "entity": "Saturday",
+        "count": 72
+      },
+      {
+        "entity": "Thursday",
+        "count": 61
+      },
+      {
+        "entity": "the 1st",
+        "count": 44
+      },
+      {
+        "entity": "Tuesday",
+        "count": 39
+      },
+      {
+        "entity": "Wednesday",
+        "count": 35
+      }
+    ],
+    "PERSON": [
+      {
+        "entity": "Nicki",
+        "count": 26
+      },
+      {
+        "entity": "Kendrick",
+        "count": 21
+      },
+      {
+        "entity": "Dustin Johnson",
+        "count": 19
+      },
+      {
+        "entity": "Madonna",
+        "count": 18
+      },
+      {
+        "entity": "Obama",
+        "count": 17
+      },
+      {
+        "entity": "Tom Brady",
+        "count": 16
+      },
+      {
+        "entity": "Hulk Hogan",
+        "count": 16
+      },
+      {
+        "entity": "Kane",
+        "count": 15
+      },
+      {
+        "entity": "Charlie Hebdo",
+        "count": 15
+      },
+      {
+        "entity": "Rahul Gandhi",
+        "count": 15
+      }
+    ],
+    "TIME": [
+      {
+        "entity": "tonight",
+        "count": 76
+      },
+      {
+        "entity": "morning",
+        "count": 27
+      },
+      {
+        "entity": "night",
+        "count": 26
+      },
+      {
+        "entity": "tomorrow night",
+        "count": 15
+      },
+      {
+        "entity": "last night",
+        "count": 14
+      },
+      {
+        "entity": "Friday night",
+        "count": 5
+      },
+      {
+        "entity": "mornings",
+        "count": 5
+      },
+      {
+        "entity": "Monday night",
+        "count": 5
+      },
+      {
+        "entity": "afternoon",
+        "count": 5
+      },
+      {
+        "entity": "the same night",
+        "count": 4
+      }
+    ],
+    "FAC": [
+      {
+        "entity": "Disneyland",
+        "count": 12
+      },
+      {
+        "entity": "Jurassic Park",
+        "count": 2
+      },
+      {
+        "entity": "Madison Square Garden",
+        "count": 2
+      },
+      {
+        "entity": "Stick",
+        "count": 2
+      },
+      {
+        "entity": "Olive Garden",
+        "count": 2
+      },
+      {
+        "entity": "the Sandman Signature Resort",
+        "count": 1
+      },
+      {
+        "entity": "Fairground",
+        "count": 1
+      },
+      {
+        "entity": "Rebecca Black's",
+        "count": 1
+      },
+      {
+        "entity": "the La Liga",
+        "count": 1
+      },
+      {
+        "entity": "Gillette Stadium",
+        "count": 1
+      }
+    ],
+    "NORP": [
+      {
+        "entity": "Muslims",
+        "count": 29
+      },
+      {
+        "entity": "Christians",
+        "count": 23
+      },
+      {
+        "entity": "Islam",
+        "count": 11
+      },
+      {
+        "entity": "Republican",
+        "count": 8
+      },
+      {
+        "entity": "Muslim",
+        "count": 6
+      },
+      {
+        "entity": "British",
+        "count": 5
+      },
+      {
+        "entity": "Jews",
+        "count": 5
+      },
+      {
+        "entity": "American",
+        "count": 5
+      },
+      {
+        "entity": "Tory",
+        "count": 4
+      },
+      {
+        "entity": "Russian",
+        "count": 4
+      }
+    ],
+    "ORG": [
+      {
+        "entity": "@user",
+        "count": 510
+      },
+      {
+        "entity": "Niall",
+        "count": 20
+      },
+      {
+        "entity": "Amazon",
+        "count": 16
+      },
+      {
+        "entity": "Islam",
+        "count": 15
+      },
+      {
+        "entity": "NFL",
+        "count": 13
+      },
+      {
+        "entity": "WWE",
+        "count": 11
+      },
+      {
+        "entity": "BBC",
+        "count": 11
+      },
+      {
+        "entity": "Justin",
+        "count": 10
+      },
+      {
+        "entity": "Carly Fiorina",
+        "count": 10
+      },
+      {
+        "entity": "Apple",
+        "count": 10
+      }
+    ],
+    "GPE": [
+      {
+        "entity": "Milan",
+        "count": 28
+      },
+      {
+        "entity": "Iran",
+        "count": 22
+      },
+      {
+        "entity": "UK",
+        "count": 16
+      },
+      {
+        "entity": "Saudi Arabia",
+        "count": 12
+      },
+      {
+        "entity": "Israel",
+        "count": 12
+      },
+      {
+        "entity": "Paris",
+        "count": 12
+      },
+      {
+        "entity": "Rousey",
+        "count": 11
+      },
+      {
+        "entity": "US",
+        "count": 9
+      },
+      {
+        "entity": "America",
+        "count": 9
+      },
+      {
+        "entity": "Sharknado",
+        "count": 8
+      }
+    ],
+    "ORDINAL": [
+      {
+        "entity": "3rd",
+        "count": 69
+      },
+      {
+        "entity": "2nd",
+        "count": 68
+      },
+      {
+        "entity": "1st",
+        "count": 51
+      },
+      {
+        "entity": "first",
+        "count": 47
+      },
+      {
+        "entity": "4th",
+        "count": 42
+      },
+      {
+        "entity": "5th",
+        "count": 23
+      },
+      {
+        "entity": "7th",
+        "count": 23
+      },
+      {
+        "entity": "6th",
+        "count": 18
+      },
+      {
+        "entity": "10th",
+        "count": 17
+      },
+      {
+        "entity": "9th",
+        "count": 17
+      }
+    ],
+    "CARDINAL": [
+      {
+        "entity": "2",
+        "count": 57
+      },
+      {
+        "entity": "4",
+        "count": 32
+      },
+      {
+        "entity": "3",
+        "count": 27
+      },
+      {
+        "entity": "one",
+        "count": 26
+      },
+      {
+        "entity": "two",
+        "count": 23
+      },
+      {
+        "entity": "1",
+        "count": 19
+      },
+      {
+        "entity": "5",
+        "count": 18
+      },
+      {
+        "entity": "6",
+        "count": 12
+      },
+      {
+        "entity": "10",
+        "count": 11
+      },
+      {
+        "entity": "7",
+        "count": 9
+      }
+    ],
+    "WORK_OF_ART": [
+      {
+        "entity": "Monday Night Football",
+        "count": 5
+      },
+      {
+        "entity": "Love",
+        "count": 4
+      },
+      {
+        "entity": "Monday Night Raw",
+        "count": 2
+      },
+      {
+        "entity": "Shades",
+        "count": 2
+      },
+      {
+        "entity": "Ric Flair",
+        "count": 2
+      },
+      {
+        "entity": "Anniversary Edition",
+        "count": 2
+      },
+      {
+        "entity": "'Accused'",
+        "count": 2
+      },
+      {
+        "entity": "Batman",
+        "count": 2
+      },
+      {
+        "entity": "Straight Outta Compton",
+        "count": 2
+      },
+      {
+        "entity": "Bad Blood",
+        "count": 2
+      }
+    ],
+    "PRODUCT": [
+      {
+        "entity": "Cole",
+        "count": 4
+      },
+      {
+        "entity": "Sat",
+        "count": 4
+      },
+      {
+        "entity": "Magic Mike XXL",
+        "count": 3
+      },
+      {
+        "entity": "MTVStars",
+        "count": 3
+      },
+      {
+        "entity": "Flight MH370",
+        "count": 2
+      },
+      {
+        "entity": "cole",
+        "count": 2
+      },
+      {
+        "entity": "@user Good morning Sue",
+        "count": 2
+      },
+      {
+        "entity": "YouTube VMware",
+        "count": 2
+      },
+      {
+        "entity": "Baby Boom CallinIt",
+        "count": 1
+      },
+      {
+        "entity": "the 1 Lil Wayne",
+        "count": 1
+      }
+    ],
+    "MONEY": [
+      {
+        "entity": "50",
+        "count": 3
+      },
+      {
+        "entity": "1",
+        "count": 3
+      },
+      {
+        "entity": "5",
+        "count": 2
+      },
+      {
+        "entity": "50 cent",
+        "count": 1
+      },
+      {
+        "entity": "200",
+        "count": 1
+      },
+      {
+        "entity": "250.00",
+        "count": 1
+      },
+      {
+        "entity": "2nd Act",
+        "count": 1
+      },
+      {
+        "entity": "up to $100,00",
+        "count": 1
+      },
+      {
+        "entity": "only $40",
+        "count": 1
+      },
+      {
+        "entity": "Only $10",
+        "count": 1
+      }
+    ],
+    "LOC": [
+      {
+        "entity": "Vamps",
+        "count": 5
+      },
+      {
+        "entity": "Africa",
+        "count": 4
+      },
+      {
+        "entity": "Europe",
+        "count": 3
+      },
+      {
+        "entity": "Sun",
+        "count": 3
+      },
+      {
+        "entity": "the Pride Parade",
+        "count": 3
+      },
+      {
+        "entity": "Green Bay",
+        "count": 2
+      },
+      {
+        "entity": "NYC",
+        "count": 2
+      },
+      {
+        "entity": "Middle East",
+        "count": 2
+      },
+      {
+        "entity": "the Eternal City",
+        "count": 1
+      },
+      {
+        "entity": "Elmo",
+        "count": 1
+      }
+    ],
+    "EVENT": [
+      {
+        "entity": "Black Friday",
+        "count": 14
+      },
+      {
+        "entity": "Labor Day",
+        "count": 2
+      },
+      {
+        "entity": "Addition of Flava",
+        "count": 1
+      },
+      {
+        "entity": "the US Open",
+        "count": 1
+      },
+      {
+        "entity": "Opening Night",
+        "count": 1
+      },
+      {
+        "entity": "Dapper Day",
+        "count": 1
+      },
+      {
+        "entity": "Thanksgiving Eve",
+        "count": 1
+      },
+      {
+        "entity": "the Black Friday Aswr",
+        "count": 1
+      },
+      {
+        "entity": "Nurses Day",
+        "count": 1
+      },
+      {
+        "entity": "/ Super Bowl",
+        "count": 1
+      }
+    ],
+    "LAW": [
+      {
+        "entity": "Constitution",
+        "count": 2
+      },
+      {
+        "entity": "@user 95.",
+        "count": 1
+      },
+      {
+        "entity": "@user Good Morning",
+        "count": 1
+      },
+      {
+        "entity": "the 5DMK II",
+        "count": 1
+      },
+      {
+        "entity": "@user 45",
+        "count": 1
+      },
+      {
+        "entity": "Chet 48",
+        "count": 1
+      },
+      {
+        "entity": "the Whitesox 5-0",
+        "count": 1
+      },
+      {
+        "entity": "the Rapacious Bull",
+        "count": 1
+      },
+      {
+        "entity": "Sep 12",
+        "count": 1
+      },
+      {
+        "entity": "article 3 gives SCOTUS no legislative powers and",
+        "count": 1
+      }
+    ],
+    "PERCENT": [
+      {
+        "entity": "99%",
+        "count": 2
+      },
+      {
+        "entity": "90%",
+        "count": 2
+      },
+      {
+        "entity": "80%",
+        "count": 2
+      },
+      {
+        "entity": "1%",
+        "count": 1
+      },
+      {
+        "entity": "18%",
+        "count": 1
+      },
+      {
+        "entity": "5%",
+        "count": 1
+      },
+      {
+        "entity": "11%",
+        "count": 1
+      },
+      {
+        "entity": "10%",
+        "count": 1
+      },
+      {
+        "entity": "up to 40%",
+        "count": 1
+      },
+      {
+        "entity": "15%",
+        "count": 1
+      }
+    ],
+    "QUANTITY": [
+      {
+        "entity": "maybe 10 feet",
+        "count": 1
+      },
+      {
+        "entity": "252 pounds",
+        "count": 1
+      },
+      {
+        "entity": "3 miles",
+        "count": 1
+      },
+      {
+        "entity": "500,00 barrels",
+        "count": 1
+      },
+      {
+        "entity": "6-inch",
+        "count": 1
+      },
+      {
+        "entity": "428 feet",
+        "count": 1
+      },
+      {
+        "entity": "11,00 tons",
+        "count": 1
+      },
+      {
+        "entity": "150 yards",
+        "count": 1
+      },
+      {
+        "entity": "4.2K",
+        "count": 1
+      },
+      {
+        "entity": "146 return yards",
+        "count": 1
+      }
+    ],
+    "LANGUAGE": [
+      {
+        "entity": "English",
+        "count": 2
+      },
+      {
+        "entity": "english",
+        "count": 2
+      }
+    ]
+  },
+  "social_media_failure_modes": {
+    "lowercased_proper_nouns": [
+      {
+        "text": "@user @user If the comment was in reference to the 'Charlie Hebdo' violent attack in january: it is no less repugnant. In my opinion",
+        "entity": "@user",
+        "label": "ORG",
+        "reason": "Lowercase capitalization causing unreliable boundary detection"
+      },
+      {
+        "text": "@user @user aaaah. Nokia used to make the Best Phone Cameras Ever.  Sadly I think those days may be past.",
+        "entity": "@user",
+        "label": "ORG",
+        "reason": "Lowercase capitalization causing unreliable boundary detection"
+      },
+      {
+        "text": "\"When gaza march out pon the battlefield it's a funeral... israel burial, gazaaa me seh\"",
+        "entity": "gaza",
+        "label": "GPE",
+        "reason": "Lowercase capitalization causing unreliable boundary detection"
+      },
+      {
+        "text": "\"When gaza march out pon the battlefield it's a funeral... israel burial, gazaaa me seh\"",
+        "entity": "israel",
+        "label": "GPE",
+        "reason": "Lowercase capitalization causing unreliable boundary detection"
+      },
+      {
+        "text": "@user If all of the Kpop fans came after 1d people will wake up tomorrow and be like \"\"who is 1d?\"\"\"",
+        "entity": "@user",
+        "label": "ORG",
+        "reason": "Lowercase capitalization causing unreliable boundary detection"
+      }
+    ],
+    "social_handle_confusion": [
+      {
+        "text": "some1 come wait in line with me Thursday at 3@target bc briana is being a bitch",
+        "misclassified_entity": "3@user",
+        "assigned_label": "DATE",
+        "reason": "Synthetic or masked handle incorrectly recognized as real-world entity"
+      },
+      {
+        "text": "@user @user If the comment was in reference to the 'Charlie Hebdo' violent attack in january: it is no less repugnant. In my opinion",
+        "misclassified_entity": "@user",
+        "assigned_label": "ORG",
+        "reason": "Synthetic or masked handle incorrectly recognized as real-world entity"
+      },
+      {
+        "text": "@user @user aaaah. Nokia used to make the Best Phone Cameras Ever.  Sadly I think those days may be past.",
+        "misclassified_entity": "@user",
+        "assigned_label": "ORG",
+        "reason": "Synthetic or masked handle incorrectly recognized as real-world entity"
+      },
+      {
+        "text": "@user If all of the Kpop fans came after 1d people will wake up tomorrow and be like \"\"who is 1d?\"\"\"",
+        "misclassified_entity": "@user",
+        "assigned_label": "ORG",
+        "reason": "Synthetic or masked handle incorrectly recognized as real-world entity"
+      },
+      {
+        "text": "For the 1st time @user has a \"High Startup impact\"   Does anyone at @user have a clue? #Windows10Fail",
+        "misclassified_entity": "@user",
+        "assigned_label": "ORG",
+        "reason": "Synthetic or masked handle incorrectly recognized as real-world entity"
+      }
+    ],
+    "hashtag_entity_misses": [
+      {
+        "text": "\"1st game played under Solar Powered floodlights in the world happened in MYSA,Nairobi Kenya. #PhilipsLED\"",
+        "missed_hashtag": "PhilipsLED",
+        "reason": "Domain hashtag entity ignored by standard news-trained NER model"
+      },
+      {
+        "text": "David Cameron is a disgusting liar. Up to his neck in criminality working with corrupt undercover cops, Theresa May covering his back. #GCHQ",
+        "missed_hashtag": "GCHQ",
+        "reason": "Domain hashtag entity ignored by standard news-trained NER model"
+      },
+      {
+        "text": "9 months from Friday there is going to be another ginormous Baby Boom #CallinIt",
+        "missed_hashtag": "CallinIt",
+        "reason": "Domain hashtag entity ignored by standard news-trained NER model"
+      },
+      {
+        "text": "AMintheAM #GOP2016 - Loser of the Week  Rick Perry : Not paying staff + polling at 1% or less = 1st to drop out?",
+        "missed_hashtag": "GOP2016",
+        "reason": "Domain hashtag entity ignored by standard news-trained NER model"
+      },
+      {
+        "text": "Got me a BAMA shirt like the 1 Lil Wayne had on last night at the concert #Biting lol IDC though lol",
+        "missed_hashtag": "Biting",
+        "reason": "Domain hashtag entity ignored by standard news-trained NER model"
+      }
+    ],
+    "sports_music_slang_confusions": [],
+    "spurious_numerical_entities": []
+  },
+  "sample_extractions": [
+    {
+      "text_id": "TXT_00001",
+      "post_text": "some1 come wait in line with me Thursday at 3@target bc briana is being a bitch",
+      "extracted_entities": [
+        {
+          "text": "Thursday",
+          "label": "DATE"
+        },
+        {
+          "text": "3@user",
+          "label": "DATE"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00002",
+      "post_text": "Mancity strikers Aguero and Dzeko you better thrash Bolton tomorrow night!",
+      "extracted_entities": [
+        {
+          "text": "Aguero",
+          "label": "PERSON"
+        },
+        {
+          "text": "Bolton",
+          "label": "PERSON"
+        },
+        {
+          "text": "tomorrow night",
+          "label": "TIME"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00003",
+      "post_text": "Would you like to join us at our annual gala at the Sandman Signature Resort on Oct 25? Contact our centre at 6042773100 for tickets!",
+      "extracted_entities": [
+        {
+          "text": "annual",
+          "label": "DATE"
+        },
+        {
+          "text": "the Sandman Signature Resort",
+          "label": "FAC"
+        },
+        {
+          "text": "Oct 25",
+          "label": "DATE"
+        },
+        {
+          "text": "6042773100",
+          "label": "DATE"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00004",
+      "post_text": "\"Sicily may form grand coalition, Italian UDC Party leader: (AGI) Rome - On Monday Rocco Buttiglione, the leader ...",
+      "extracted_entities": [
+        {
+          "text": "Italian",
+          "label": "NORP"
+        },
+        {
+          "text": "UDC Party",
+          "label": "ORG"
+        },
+        {
+          "text": "Rome",
+          "label": "GPE"
+        },
+        {
+          "text": "Monday",
+          "label": "DATE"
+        },
+        {
+          "text": "Rocco Buttiglione",
+          "label": "PERSON"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00005",
+      "post_text": "@user @user If the comment was in reference to the 'Charlie Hebdo' violent attack in january: it is no less repugnant. In my opinion",
+      "extracted_entities": [
+        {
+          "text": "@user",
+          "label": "ORG"
+        },
+        {
+          "text": "Charlie Hebdo'",
+          "label": "PERSON"
+        },
+        {
+          "text": "january",
+          "label": "DATE"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00006",
+      "post_text": "@user @user aaaah. Nokia used to make the Best Phone Cameras Ever.  Sadly I think those days may be past.",
+      "extracted_entities": [
+        {
+          "text": "@user",
+          "label": "ORG"
+        },
+        {
+          "text": "Nokia",
+          "label": "ORG"
+        },
+        {
+          "text": "the Best Phone Cameras Ever",
+          "label": "ORG"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00007",
+      "post_text": "Curtis Painter was asked in interviews today if as the lead singer of Nirvana was getting the band back together.",
+      "extracted_entities": [
+        {
+          "text": "Curtis Painter",
+          "label": "ORG"
+        },
+        {
+          "text": "today",
+          "label": "DATE"
+        },
+        {
+          "text": "Nirvana",
+          "label": "GPE"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00008",
+      "post_text": "\"When gaza march out pon the battlefield it's a funeral... israel burial, gazaaa me seh\"",
+      "extracted_entities": [
+        {
+          "text": "gaza",
+          "label": "GPE"
+        },
+        {
+          "text": "israel",
+          "label": "GPE"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00009",
+      "post_text": "\"WLS Quick Look \"\" Caitlyn Jenner - 1st Public Reunion with Ex Wife #Selfie \"\"",
+      "extracted_entities": [
+        {
+          "text": "Caitlyn Jenner - 1st",
+          "label": "PERSON"
+        },
+        {
+          "text": "Selfie",
+          "label": "NORP"
+        }
+      ]
+    },
+    {
+      "text_id": "TXT_00010",
+      "post_text": "\"1st game played under Solar Powered floodlights in the world happened in MYSA,Nairobi Kenya. #PhilipsLED\"",
+      "extracted_entities": [
+        {
+          "text": "1st",
+          "label": "ORDINAL"
+        },
+        {
+          "text": "Solar Powered",
+          "label": "ORG"
+        },
+        {
+          "text": "MYSA",
+          "label": "ORG"
+        },
+        {
+          "text": "Nairobi",
+          "label": "GPE"
+        },
+        {
+          "text": "Kenya",
+          "label": "GPE"
+        }
+      ]
+    }
+  ]
+}

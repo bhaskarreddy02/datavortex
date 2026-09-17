@@ -1,0 +1,32 @@
+{
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "total_vectors_encoded": 9000,
+  "semantic_equivalence_demo": [
+    {
+      "text_a": "My payment isn't going through",
+      "text_b": "Transaction keeps failing",
+      "cosine_similarity": 0.4579,
+      "interpretation": "Moderate"
+    },
+    {
+      "text_a": "I cannot login to my account, password reset link is broken",
+      "text_b": "Locked out of my profile and recovery email is not working",
+      "cosine_similarity": 0.5777,
+      "interpretation": "Moderate"
+    },
+    {
+      "text_a": "The new interface looks incredible, loving the fresh design",
+      "text_b": "Super happy with the UI update, great aesthetic",
+      "cosine_similarity": 0.7504,
+      "interpretation": "Strong Semantic Match"
+    },
+    {
+      "text_a": "The app crashes whenever I open the camera",
+      "text_b": "The weather is very sunny in Madrid today",
+      "cosine_similarity": 0.0282,
+      "interpretation": "Dissimilar/Unrelated"
+    }
+  ],
+  "near_duplicate_samples": []
+}
