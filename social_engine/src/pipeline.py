@@ -146,6 +146,10 @@ class SocialEnginePipeline:
             "derived_semantic_profile": profile
         }
 
+    def predict(self, text: str) -> dict:
+        """Alias for predict_text."""
+        return self.predict_text(text)
+
     def analyze(self, post_text: str, top_k_similar: int = 3) -> dict:
         """
         Executes full semantic understanding pipeline for a single post.
@@ -250,3 +254,6 @@ def run_pipeline_demo(outputs_dir="social_engine/outputs"):
 
 if __name__ == '__main__':
     run_pipeline_demo()
+
+# Backwards compatibility and class name aliases
+SemanticUnderstandingPipeline = SocialEnginePipeline

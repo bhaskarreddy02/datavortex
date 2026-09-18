@@ -37,50 +37,9 @@ def build_notebook():
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "# Social Engine — Semantic Understanding Layer",
-        "### End-to-End NLP & Deep Learning Pipeline (Round 2 Technical Submission)",
-        "",
-        "**Competition Challenge: Rebuilding the Social Engine's Semantic Layer**",
-        "",
-        "The objective of this technical report and notebook is to reconstruct the **Social Engine Semantic Understanding Layer** using Natural Language Processing on **Dataset 2** (`Labeled_Social_NLP_Training_Data.csv`).",
-        "",
-        "```",
-        "                    RAW POST",
-        "                        │",
-        "                        ▼",
-        "             NLP PREPROCESSING PIPELINE",
-        "           (Unicode, Emoticons, Negations)",
-        "                        │",
-        "                        ▼",
-        "             TEXT REPRESENTATION LAYER",
-        "            (Sublinear TF-IDF / MiniLM)",
-        "                        │",
-        "             ┌──────────┴──────────┐",
-        "             ▼                     ▼",
-        "     SENTIMENT MODEL          TOPIC MODEL",
-        "   (LogReg / SVM / NB)    (Weighted Linear SVM)",
-        "             │                     │",
-        "             ▼                     ▼",
-        "     Positive/Neg/Neu         Topic Class",
-        "             │                     │",
-        "             └──────────┬──────────┘",
-        "                        ▼",
-        "             SHARED SEMANTIC PROFILE",
-        "         (Confidence-Aware + Derived Insight)",
-        "                        │",
-        "             ┌──────────┴──────────┐",
-        "             ▼                     ▼",
-        "     Confidence Status       Error Analysis",
-        "      (High / Review)              │",
-        "                                   ▼",
-        "                         Sarcasm / Ambiguity /",
-        "                         Slang / Context Brevity",
-        "```",
-        "",
-        "### Core Principles & Competition Constraints:",
-        "1. **Ground Truth Boundary**: The dataset strictly provides two supervised targets: `sentiment_label` (Positive, Negative, Neutral) and `topic_category` (Account_Security, Community_Discussion, Feature_Feedback, Technical_Issues). No fabricated supervised classes (e.g. sarcasm, anger, products) are claimed.",
-        "2. **Derived Insights**: High-level semantic interpretations (e.g. *Negative + Feature_Feedback $\\rightarrow$ Negative Product/Feature Complaint*) are explicitly presented as **rule-based derived insights**, not supervised labels.",
-        "3. **Confidence-Awareness**: Outputs include probabilistic confidence and operational triage status (`High Confidence` vs. `Needs Review`).",
-        "4. **Deep Error Analysis**: Sarcasm, slang, abbreviations, and context brevity are systematically audited as qualitative sources of classification error rather than artificial classifiers."
+        "### End-to-End NLP Pipeline: Sentiment Analysis, Topic Classification & Semantic Search",
+        "**Dataset 2**: 9,000 labeled social media posts (`sentiment_label` and `topic_category`).",
+        "This notebook walks through data auditing, non-destructive cleaning, leak-free splitting, model benchmarking, error analysis, and production inference."
     ]))
 
     # -------------------------------------------------------------------------
@@ -88,8 +47,8 @@ def build_notebook():
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 0: Environment Setup, Library Imports & Reproducibility",
-        "We configure dependencies, establish deterministic random seeds across all libraries, and set publication-grade visual formatting."
+        "## Step 0: Environment Setup & Library Imports",
+        "Initialize core data science, classical ML, and NLP libraries, set random seeds for reproducibility, and configure plotting styles."
     ]))
     
     cells.append(create_code_cell([
@@ -165,12 +124,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 1: PHASE 1 — DATASET UNDERSTANDING & INTEGRITY AUDIT
+    # STEP 1: DATASET UNDERSTANDING & INTEGRITY AUDIT
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 1: Phase 1 — Dataset Understanding & Integrity Audit",
-        "We inspect Dataset 2 (`Labeled_Social_NLP_Training_Data.csv`) across total records, missing values, duplicates, and label consistency."
+        "## Step 1: Dataset Understanding & Integrity Audit",
+        "Load Dataset 2 (`Labeled_Social_NLP_Training_Data.csv`) and inspect record counts, missing values, duplicates, and label consistency across retweets."
     ]))
     
     cells.append(create_code_cell([
@@ -179,6 +138,10 @@ def build_notebook():
         "    'Labeled_Social_NLP_Training_Data.csv',",
         "    'sentiment/Labeled_Social_NLP_Training_Data.csv',",
         "    '../sentiment/Labeled_Social_NLP_Training_Data.csv',",
+        "    '../../sentiment/Labeled_Social_NLP_Training_Data.csv',",
+        "    '../data/Labeled_Social_NLP_Training_Data.csv',",
+        "    'social_engine/data/Labeled_Social_NLP_Training_Data.csv',",
+        "    '../social_engine/data/Labeled_Social_NLP_Training_Data.csv',",
         "    '../Labeled_Social_NLP_Training_Data.csv'",
         "]",
         "data_path = next(p for p in possible_paths if os.path.exists(p))",
@@ -208,22 +171,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 2: PHASE 2 — SOCIAL-MEDIA-AWARE PREPROCESSING PIPELINE
+    # STEP 2: SOCIAL-MEDIA-AWARE PREPROCESSING PIPELINE
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 2: Phase 2 — Social-Media-Aware Preprocessing Pipeline",
-        "### Preprocessing Strategy & Decisions:",
-        "Standard NLP text normalization (e.g. lowercasing, aggressive stopword stripping, and punctuation removal) destroys critical affective cues in microblogs. Our domain-aware cleaner enforces:",
-        "1. **Unicode Repair**: Fixes literal escaped quotes (`\\u2019`, `u2019` $\\rightarrow$ `'`) and applies Unicode NFKC normalization.",
-        "2. **HTML Entity Decoding**: Converts entities such as `&amp;`, `&lt;`, `&gt;`, `&#39;` back to natural characters.",
-        "3. **Mention Normalization**: Replaces handles (`@user`) to standardize syntax while preventing vocabulary explosion.",
-        "4. **Hashtag Unpacking**: Strips the `#` prefix (`#AccountSecurity` $\rightarrow$ `AccountSecurity`) so subword tokenizers extract genuine semantic meaning.",
-        "5. **Elongation Reduction**: Compresses characters repeated $\\ge 3$ times (`sooooo` $\rightarrow$ `soo`) to correct spelling while preserving affective emphasis.",
-        "6. **Preservation of Sentiment Carriers & Negations**:",
-        "   - **Emojis & Emoticons are explicitly preserved** (`😭`, `🔥`, `:)`, `:-(`).",
-        "   - **Punctuation intensity is preserved** (`!!`, `???`).",
-        "   - **Negation words (`not`, `never`, `no`) are strictly retained** to avoid polarity inversion."
+        "## Step 2: Social Media Preprocessing Pipeline",
+        "Clean social text: repair escaped Unicode/HTML entities, normalize mentions and URLs, unpack hashtags, and preserve emojis, emoticons, and negation words (`not`, `never`)."
     ]))
     
     cells.append(create_code_cell([
@@ -294,18 +247,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 3: PHASE 3 — LEAK-FREE STRATIFIED GROUP PARTITIONING
+    # STEP 3: LEAK-FREE STRATIFIED GROUP PARTITIONING
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 3: Phase 3 — Leak-Free Stratified Group Splitting",
-        "**Leakage Elimination:** In social media text collections, identical posts appear repeatedly due to quote tweets, retweets, and cross-posting.",
-        "If identical texts appear in both Train and Test splits, test accuracy is artificially inflated (data leakage).",
-        "",
-        "We employ `StratifiedGroupKFold(n_splits=10)` where:",
-        "- **Target (`y`)**: Combined joint key `(sentiment_label + '___' + topic_category)` to maintain stratification across both targets.",
-        "- **Groups (`groups`)**: `cleaned_text` ensuring duplicate texts are strictly confined to a single partition.",
-        "- Split ratio: **80% Train (7,200 rows), 10% Validation (900 rows), 10% Held-Out Test (900 rows)**."
+        "## Step 3: Leak-Free Stratified Group Splitting",
+        "Split data into 80% Train, 10% Validation, and 10% Test using `StratifiedGroupKFold` grouped on text to prevent viral duplicate posts from leaking across splits."
     ]))
     
     cells.append(create_code_cell([
@@ -334,13 +281,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 4: PHASE 4 — EDA & TOPIC × SENTIMENT INTERACTION ANALYSIS
+    # STEP 4: EDA & TOPIC × SENTIMENT INTERACTION ANALYSIS
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 4: Phase 4 — Exploratory Data Analysis & Topic × Sentiment Interaction",
-        "### Understanding WHAT People Talk About and HOW They Feel About It",
-        "We analyze class distributions, post length statistics, and the joint cross-tabulation between topic and sentiment."
+        "## Step 4: Exploratory Data Analysis & Topic × Sentiment Interaction",
+        "Analyze class distributions (balanced sentiment vs. 86.1% majority topic), inspect post length distributions, and examine the topic × sentiment cross-tabulation."
     ]))
     
     cells.append(create_code_cell([
@@ -428,17 +374,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 5: PHASE 5 — TEXT REPRESENTATION LAYER
+    # STEP 5: TEXT REPRESENTATION LAYER
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 5: Phase 5 — Text Representation Layer",
-        "**Strict Fitting Principle**: Feature extractors are fitted **ONLY** on the training split (`train_df['cleaned_text']`). Validation and test splits are transformed using the fitted vocabulary to prevent lookahead leakage.",
-        "",
-        "We construct a sublinear TF-IDF vectorizer:",
-        "- `sublinear_tf=True`: Replaces $tf$ with $1 + \\log(tf)$ to taper extreme word frequencies.",
-        "- `ngram_range=(1, 2)`: Captures single tokens and bigrams (critical for negations like `not working`, `never again`).",
-        "- `min_df=2`, `max_features=15000`: Eliminates singleton noise and restricts vocabulary dimensionality."
+        "## Step 5: Text Representation Layer (Sublinear TF-IDF)",
+        "Extract unigram and bigram TF-IDF features (15,000 max features, sublinear term frequency) fitted strictly on the training set to prevent lookahead bias."
     ]))
     
     cells.append(create_code_cell([
@@ -461,15 +402,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 6: PHASE 6 — SENTIMENT CLASSIFICATION (MODELS & EVALUATION)
+    # STEP 6: SENTIMENT CLASSIFICATION (MODELS & EVALUATION)
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 6: Phase 6 — Sentiment Classification: Model Selection & Evaluation",
-        "We train and benchmark candidate NLP classifiers for the 3-class sentiment task (`Positive`, `Negative`, `Neutral`):",
-        "1. **Logistic Regression** ($L_2$ regularization, $C=1.5$)",
-        "2. **Linear Support Vector Machine (LinearSVC)** with Platt probability calibration via `CalibratedClassifierCV`",
-        "3. **Complement Naive Bayes (ComplementNB)** designed specifically for text data"
+        "## Step 6: Sentiment Classification — Model Selection & Evaluation",
+        "Train and benchmark candidate classifiers (Logistic Regression, Calibrated Linear SVM, and Complement Naive Bayes) on the 3-class sentiment task."
     ]))
     
     cells.append(create_code_cell([
@@ -540,13 +478,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 7: PHASE 7 — TOPIC CLASSIFICATION (MODELS & EVALUATION)
+    # STEP 7: TOPIC CLASSIFICATION (MODELS & EVALUATION)
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 7: Phase 7 — Topic Classification: Model Selection & Evaluation",
-        "Topic classification presents severe class imbalance (`Community_Discussion` represents 86.1% of posts).",
-        "To prevent minority domain topics (`Account_Security`, `Technical_Issues`, `Feature_Feedback`) from being absorbed, we employ **inverse class frequency weighting** (`class_weight='balanced'`)."
+        "## Step 7: Topic Classification — Model Selection & Evaluation",
+        "Train class-weighted classifiers (`class_weight='balanced'`) to prevent minority domain topics (`Account_Security`, `Technical_Issues`, `Feature_Feedback`) from being absorbed by `Community_Discussion`."
     ]))
     
     cells.append(create_code_cell([
@@ -618,15 +555,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 8: PHASE 8 — CONTEXTUAL TRANSFORMERS & MULTI-TASK LEARNING
+    # STEP 8: CONTEXTUAL TRANSFORMERS & MULTI-TASK LEARNING
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 8: Phase 8 — Contextual Dense Representations & Multi-Task Neural Learning",
-        "We experiment with contextual semantic representations (`sentence-transformers/all-MiniLM-L6-v2`, 384 dimensions) and compare:",
-        "1. **Dedicated Independent Transformer Heads**",
-        "2. **Joint Multi-Task Neural Network** (`MultiTaskSocialTransformer`), where a shared contextual dense projection simultaneously drives dual classification heads:",
-        "$$\\mathcal{L}_{joint} = \\mathcal{L}_{sentiment} + 1.2 \\times \\mathcal{L}_{topic\\_weighted}$$"
+        "## Step 8: Contextual Dense Representations & Multi-Task Neural Learning",
+        "Evaluate 384-dimensional dense semantic representations (`all-MiniLM-L6-v2`) and a joint Multi-Task neural network simultaneously predicting sentiment and topic."
     ]))
     
     cells.append(create_code_cell([
@@ -639,9 +573,14 @@ def build_notebook():
         "else:",
         "    print('Loading pre-computed 384-dimensional dense semantic embeddings from disk...')",
         "    embedder = None",
-        "    X_train_emb = np.load('social_engine/models/train_embeddings.npy') if os.path.exists('social_engine/models/train_embeddings.npy') else np.zeros((len(train_df), 384))",
-        "    X_val_emb = np.load('social_engine/models/val_embeddings.npy') if os.path.exists('social_engine/models/val_embeddings.npy') else np.zeros((len(val_df), 384))",
-        "    X_test_emb = np.load('social_engine/models/test_embeddings.npy') if os.path.exists('social_engine/models/test_embeddings.npy') else np.zeros((len(test_df), 384))",
+        "    def find_model_file(fname):",
+        "        for p in [fname, os.path.join('social_engine', 'models', fname), os.path.join('..', 'models', fname), os.path.join('..', '..', 'social_engine', 'models', fname)]:",
+        "            if os.path.exists(p): return p",
+        "        return fname",
+        "    tr_p, va_p, te_p = find_model_file('train_embeddings.npy'), find_model_file('val_embeddings.npy'), find_model_file('test_embeddings.npy')",
+        "    X_train_emb = np.load(tr_p) if os.path.exists(tr_p) else np.zeros((len(train_df), 384))",
+        "    X_val_emb = np.load(va_p) if os.path.exists(va_p) else np.zeros((len(val_df), 384))",
+        "    X_test_emb = np.load(te_p) if os.path.exists(te_p) else np.zeros((len(test_df), 384))",
         "",
         "SENT_MAP = {'Negative': 0, 'Neutral': 1, 'Positive': 2}",
         "TOP_MAP = {'Account_Security': 0, 'Community_Discussion': 1, 'Feature_Feedback': 2, 'Technical_Issues': 3}",
@@ -734,15 +673,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 9: PHASE 9 — MODEL EXPLAINABILITY & FEATURE IMPORTANCE
+    # STEP 9: MODEL EXPLAINABILITY & FEATURE IMPORTANCE
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 9: Phase 9 — Model Explainability & Feature Importance",
-        "### Inspecting What the Linear Models Learned",
-        "To ensure model transparency and eliminate black-box opacity, we extract the top informative TF-IDF n-grams associated with each class.",
-        "- For Sentiment: Top positive coefficients driving `Positive`, `Negative`, and `Neutral` predictions.",
-        "- For Topic: Top predictive domain n-grams for `Account_Security`, `Technical_Issues`, `Feature_Feedback`, and `Community_Discussion`."
+        "## Step 9: Model Explainability & Feature Importance",
+        "Inspect the highest-weighted TF-IDF n-grams driving predictions for each sentiment polarity and topic category to verify what the models learned."
     ]))
     
     cells.append(create_code_cell([
@@ -797,12 +733,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 10: PHASE 10 — MASTER MODEL COMPARISON BENCHMARK
+    # STEP 10: MASTER MODEL COMPARISON BENCHMARK
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 10: Phase 10 — Master Model Comparison Benchmark Table",
-        "We synthesize all evaluated NLP models across both tasks on the **held-out Test Set (900 unseen posts)** with strictly zero data leakage."
+        "## Step 10: Master Model Comparison Benchmark",
+        "Compare all 10 evaluated models on the held-out test set across accuracy, macro F1, weighted F1, and training latency."
     ]))
     
     cells.append(create_code_cell([
@@ -824,27 +760,16 @@ def build_notebook():
     ]))
     
     cells.append(create_markdown_cell([
-        "### Architectural Selection & Trade-Off Analysis:",
-        "1. **Sentiment Task**: Dense contextual embeddings outperform bag-of-words. The **Multi-Task Transformer achieved 0.6209 Macro F1**, benefiting from cross-task regularization between topic and sentiment features.",
-        "2. **Topic Task**: Classical linear models with class weighting (**Logistic Regression: 0.6476 Macro F1, 92.0% Accuracy**) outperform dense embeddings. In short social posts, topic categories rely on crisp domain vocabulary triggers (`password`, `glitch`, `crash`, `update`), where linear decision boundaries excel without semantic drift.",
-        "3. **Production Recommendation**: The hybrid architecture pairs the sublinear TF-IDF weighted linear models with contextual embeddings for ultra-fast, robust inference (< 1.5 ms latency)."
+        "**Key Architectural Finding**: Dense embeddings excel on subtle sentiment nuance (**0.6209 Macro F1**), while calibrated class-weighted linear models dominate topic discrimination (**0.6476 Macro F1, 92.0% Accuracy**) with sub-1.5 ms inference latency."
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 11: PHASE 11 — SYSTEMATIC QUALITATIVE ERROR ANALYSIS
+    # STEP 11: SYSTEMATIC QUALITATIVE ERROR ANALYSIS
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 11: Phase 11 — Systematic Qualitative Error Analysis",
-        "### In-Depth Investigation of Failure Modes",
-        "To satisfy competition guidelines, we automatically inspect misclassified examples from the test set across 5 primary failure modes:",
-        "1. **Sarcasm & Polarity Inversions** (Lexical positive words masking caustic negative intent)",
-        "2. **Minority Topic Absorption** (Conversational phrasing swallowed by `Community_Discussion`)",
-        "3. **Slang, Colloquialisms & Abbreviations** (Informal social expressions confusing bag-of-words)",
-        "4. **Ambiguous Boundary & Mixed Sentiment** (Posts containing both praise and complaint)",
-        "5. **Short Low-Context Posts** (Posts under 10 words lacking sufficient discriminative tokens)",
-        "",
-        "*Note on Sarcasm:* We do not claim to have a sarcasm classifier. Rather, sarcasm is systematically audited as a leading qualitative source of sentiment misclassification."
+        "## Step 11: Systematic Qualitative Error Analysis",
+        "Inspect real misclassified test cases across 4 primary social media failure patterns: sarcasm, minority topic absorption, informal slang, and short low-context posts."
     ]))
     
     cells.append(create_code_cell([
@@ -856,6 +781,7 @@ def build_notebook():
         "topic_probs = best_topic_clf.predict_proba(X_test_tfidf)",
         "",
         "test_analysis = test_df.copy()",
+        "test_analysis['word_count'] = test_analysis['cleaned_text'].apply(lambda x: len(str(x).split()))",
         "test_analysis['pred_sentiment'] = best_sent_clf.predict(X_test_tfidf)",
         "test_analysis['sent_conf'] = np.max(sent_probs, axis=1).round(4)",
         "test_analysis['pred_topic'] = best_topic_clf.predict(X_test_tfidf)",
@@ -920,6 +846,9 @@ def build_notebook():
         "    )",
         "",
         "# 4. Short Low-Context Post Sample",
+        "if 'word_count' not in test_analysis.columns:",
+        "    test_analysis['word_count'] = test_analysis['cleaned_text'].apply(lambda x: len(str(x).split()))",
+        "",
         "short_cases = test_analysis[",
         "    (test_analysis['word_count'] <= 6) &",
         "    (test_analysis['sent_error'] | test_analysis['topic_error'])",
@@ -934,21 +863,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 12: PHASE 12 — CONFIDENCE-AWARE SHARED SEMANTIC PIPELINE
+    # STEP 12: CONFIDENCE-AWARE SHARED SEMANTIC PIPELINE
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 12: Phase 12 — Confidence-Aware Shared Semantic Pipeline",
-        "### Dual-Head Prediction + Confidence Triage + Derived Insights",
-        "We construct the final production inferencer: `predict_text(text: str) -> dict`.",
-        "",
-        "### Key Architectural Features:",
-        "1. **Confidence-Aware Triage**:",
-        "   - If $\\min(\\text{sent\\_conf}, \\text{topic\\_conf}) \\ge 0.55$: Returns `\"High Confidence\"` (automated processing).",
-        "   - If confidence $< 0.55$: Flags prediction as `\"Low Confidence / Needs Review\"` for human auditing.",
-        "2. **Semantic Profile (Derived Rule-Based Insights)**:",
-        "   - Combines the two actual supervised predictions into a high-level qualitative interpretation (e.g. *Negative + Feature_Feedback $\\rightarrow$ Negative Product/Feature Feedback*).",
-        "   - *Competition Compliance:* Explicitly documented as a **rule-based derived insight**, not a supervised label."
+        "## Step 12: Confidence-Aware Shared Semantic Pipeline",
+        "Construct the production inferencer (`predict_text`): returns dual predictions, flags low-confidence posts (< 0.55) for human review, and maps `(sentiment, topic)` to actionable derived business profiles."
     ]))
     
     cells.append(create_code_cell([
@@ -1028,13 +948,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 13: PHASE 13 — UNSUPERVISED TOPIC DISCOVERY & VECTOR SEARCH
+    # STEP 13: UNSUPERVISED TOPIC DISCOVERY & VECTOR SEARCH
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 13: Phase 13 — Unsupervised Topic Discovery & Vector Search Engine",
-        "To explore semantic granularity beyond the 4 supervised labels, we cluster the 384-dimensional dense semantic vectors using KMeans and extract class-based TF-IDF keywords.",
-        "This proves that the monolithic 86% `Community_Discussion` class naturally decomposes into 6 latent micro-communities."
+        "## Step 13: Unsupervised Topic Discovery & Vector Search",
+        "Cluster dense embeddings using KMeans to uncover 6 latent micro-communities inside `Community_Discussion`, and demonstrate cosine similarity vector search."
     ]))
     
     cells.append(create_code_cell([
@@ -1094,15 +1013,12 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 14: PHASE 14 — NAMED ENTITY RECOGNITION (NER) & SOCIAL ERROR AUDIT
+    # STEP 14: NAMED ENTITY RECOGNITION (NER) & SOCIAL ERROR AUDIT
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 14: Phase 14 — Named Entity Recognition (NER) & Social Media Error Audit",
-        "We extract named entities across the corpus using spaCy (`en_core_web_sm`) and systematically audit **documented failure modes** inherent to social media text:",
-        "1. **Social Handle Confusion**: Masked tokens (e.g. `@user`) or casual handles misclassified as real-world `ORG` or `PERSON`.",
-        "2. **Lowercase Boundary Errors**: Informal uncapitalized proper nouns causing boundary detection failures.",
-        "3. **Domain Hashtag Misses**: Specialized community and security hashtags ignored by standard tokenizers."
+        "## Step 14: Named Entity Recognition (NER) & Social Error Audit",
+        "Extract named entities with spaCy (`en_core_web_sm`) and dynamically audit common social media failure modes: masked handles, lowercase proper nouns, and unparsed hashtags."
     ]))
     
     cells.append(create_code_cell([
@@ -1178,27 +1094,14 @@ def build_notebook():
     ]))
 
     # -------------------------------------------------------------------------
-    # STEP 15: PHASE 15 — TECHNICAL REPORT READINESS, LIMITATIONS & FUTURE ROADMAP
+    # STEP 15: TECHNICAL REPORT READINESS, LIMITATIONS & FUTURE ROADMAP
     # -------------------------------------------------------------------------
     cells.append(create_markdown_cell([
         "---",
-        "## Step 15: Phase 15 — Competition Summary, Limitations & Future Roadmap",
-        "",
-        "### Key Technical Takeaways for Round 2 Submission:",
-        "1. **Preprocessing Integrity**: Non-destructive social normalization (repairing Unicode corruption, preserving emojis, emoticons, and negation words) is the bedrock of accurate sentiment extraction in casual social data.",
-        "2. **Multi-Task Neural Regularization**: Jointly training Sentiment and Topic heads on a shared contextual embedding backbone achieves the highest sentiment performance (**0.6209 Macro F1**).",
-        "3. **Domain Vocabulary Efficiency**: In short microblogs, calibrated class-weighted linear models excel at topic discrimination (**0.6476 Macro F1, 92.0% Accuracy**), with sub-millisecond inference.",
-        "4. **Actionable Confidence Triage**: Flagging low-confidence predictions enables risk-free deployment with human-in-the-loop review.",
-        "5. **Derived Semantic Insights**: Translating `(sentiment, topic)` combinations into qualitative social profiles bridges machine learning outputs to executive decision-making.",
-        "",
-        "### Documented Limitations:",
-        "- **Pragmatic Sarcasm**: Bag-of-words and shallow networks struggle with sarcastic inversion where literal positive phrasing disguises critical discontent.",
-        "- **Extreme Topic Imbalance**: While inverse weighting and thresholding protect `Account_Security` and `Technical_Issues`, `Feature_Feedback` (1.5% support) requires active feedback collection to expand training examples.",
-        "- **Brevity & Ambiguity**: Posts under 6 words lack syntactic context, frequently defaulting to marginal priors.",
-        "",
-        "### Future Roadmap (DistilBERT & LLMs):",
-        "- End-to-end fine-tuning of `distilbert-base-uncased` with focal loss to jointly capture complex pragmatic sarcasm and long-range dependencies.",
-        "- Semi-supervised pseudo-labeling of unannotated social streams to balance rare topic classes."
+        "## Step 15: Summary & Key Takeaways",
+        "- **Non-destructive Preprocessing**: Preserving emojis, emoticons, and negations is critical for sentiment extraction.",
+        "- **Hybrid Architecture**: Multi-Task Transformer for nuanced sentiment + class-weighted linear models for fast, accurate topic classification.",
+        "- **Confidence Triage**: Automatically separates high-confidence predictions from ambiguous posts needing human review."
     ]))
     
     nb = {
