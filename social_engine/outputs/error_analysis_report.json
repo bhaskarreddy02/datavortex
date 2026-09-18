@@ -5,174 +5,21 @@
   "topic_errors_count": 69,
   "topic_error_rate": 7.67,
   "failure_categories": {
-    "minority_swallowed_by_majority": {
+    "sarcasm_and_polarity_inversion": {
+      "count": 54,
+      "description": "Caustic negative sentiment phrased with superficial praise or laughing tokens."
+    },
+    "minority_topic_absorption": {
       "count": 67,
-      "description": "Minority domain posts misclassified as generic Community Discussion due to domain vocabulary sparsity or conversational tone.",
-      "samples": [
-        {
-          "text_id": "TXT_00126",
-          "post_text": "Apparently Justin Beiber is in the area. I know this because I have students (plural) missing school tomorrow to see him.",
-          "topic_category": "Technical_Issues",
-          "pred_topic": "Community_Discussion",
-          "topic_confidence": 0.7738
-        },
-        {
-          "text_id": "TXT_00145",
-          "post_text": "I know y'all band wagoning j Cole and Kendrick if you thought Black Friday was fire",
-          "topic_category": "Account_Security",
-          "pred_topic": "Community_Discussion",
-          "topic_confidence": 0.8299
-        },
-        {
-          "text_id": "TXT_00176",
-          "post_text": "It's a Wednesday girls night out as '90's band Wilson Phillips fills the Winspear Opera House with their brand of top 40 joy at 8p....",
-          "topic_category": "Account_Security",
-          "pred_topic": "Community_Discussion",
-          "topic_confidence": 0.5845
-        },
-        {
-          "text_id": "TXT_00231",
-          "post_text": "Hammond: we now have a balanced budget with an affordable equipment programme\\u002c backed by what will still be the 4th largest defence budget.",
-          "topic_category": "Feature_Feedback",
-          "pred_topic": "Community_Discussion",
-          "topic_confidence": 0.8852
-        },
-        {
-          "text_id": "TXT_00264",
-          "post_text": "Quick reminder to folks agreeing with Jon. Ric Flair's 16th reign came via Kevin Nash handing him the title. He lost it about an hour later.",
-          "topic_category": "Feature_Feedback",
-          "pred_topic": "Community_Discussion",
-          "topic_confidence": 0.6485
-        }
-      ]
+      "description": "Specific domain problem posts misclassified as generic Community Discussion."
     },
-    "sentiment_polarity_inversions": {
-      "count": 91,
-      "description": "Severe sentiment inversion (Negative <-> Positive) triggered by sarcasm, conflicting lexical cues (e.g. 'haha DUKE what a joke'), or polite complaint phrasing.",
-      "samples": [
-        {
-          "text_id": "TXT_00148",
-          "post_text": "@user I\\u2019m taking it easy since I\\u2019ll fly to Cupertino on Sunday.",
-          "sentiment_label": "Positive",
-          "pred_sentiment": "Negative",
-          "sent_confidence": 0.4862
-        },
-        {
-          "text_id": "TXT_00166",
-          "post_text": "I truly think that Beyonce has the power to heal people bc on thurs I was deathly ill and on friday (Beyonce's bday) I woke up feeling okay",
-          "sentiment_label": "Positive",
-          "pred_sentiment": "Negative",
-          "sent_confidence": 0.5521
-        },
-        {
-          "text_id": "TXT_00231",
-          "post_text": "Hammond: we now have a balanced budget with an affordable equipment programme\\u002c backed by what will still be the 4th largest defence budget.",
-          "sentiment_label": "Positive",
-          "pred_sentiment": "Negative",
-          "sent_confidence": 0.4283
-        },
-        {
-          "text_id": "TXT_00290",
-          "post_text": "I truly think that Beyonce has the power to heal people bc on thurs I was deathly ill and on friday (Beyonce's bday) I woke up feeling okay",
-          "sentiment_label": "Positive",
-          "pred_sentiment": "Negative",
-          "sent_confidence": 0.5521
-        },
-        {
-          "text_id": "TXT_00380",
-          "post_text": "@user I really don\\u2019t know why you can\\u2019t wait for me to get to LAX tomorrow\\u002c Chrissy. Us being the best of friends and all..rude.",
-          "sentiment_label": "Negative",
-          "pred_sentiment": "Positive",
-          "sent_confidence": 0.8768
-        }
-      ]
-    },
-    "neutral_boundary_ambiguity": {
-      "count": 273,
-      "description": "Subjective boundary between neutral factual reporting and mild personal sentiment in conversational text.",
-      "samples": [
-        {
-          "text_id": "TXT_00943",
-          "post_text": "It\\u2019s going to be a sad day in Port Charles tomorrow! @user @user #JasonMorgan #StoneCold",
-          "sentiment_label": "Negative",
-          "pred_sentiment": "Neutral",
-          "sent_confidence": 0.3357
-        },
-        {
-          "text_id": "TXT_07521",
-          "post_text": "It\\u2019s going to be a sad day in Port Charles tomorrow! @user @user #JasonMorgan #StoneCold",
-          "sentiment_label": "Negative",
-          "pred_sentiment": "Neutral",
-          "sent_confidence": 0.3357
-        },
-        {
-          "text_id": "TXT_00610",
-          "post_text": "@user Grow it out. I wanna see a part in the middle and Bali beads either side before the 31st of Fan.",
-          "sentiment_label": "Neutral",
-          "pred_sentiment": "Negative",
-          "sent_confidence": 0.336
-        },
-        {
-          "text_id": "TXT_01512",
-          "post_text": "Big Thurs coming in HS Football: Richwood @ Ouachita\\u002c Grambling @ OCS\\u002c & St. Fred @user Will have you covered all wk @user",
-          "sentiment_label": "Neutral",
-          "pred_sentiment": "Negative",
-          "sent_confidence": 0.3467
-        },
-        {
-          "text_id": "TXT_07638",
-          "post_text": "We closing out the Knicks tomorrow",
-          "sentiment_label": "Neutral",
-          "pred_sentiment": "Negative",
-          "sent_confidence": 0.3473
-        }
-      ]
+    "slang_and_abbreviations": {
+      "count": 11,
+      "description": "Informal shorthand and slang carrying compressed emotional valence."
     },
     "short_low_context_posts": {
-      "count": 28,
-      "description": "Extremely short social posts (<10 words) lacking sufficient discriminative tokens for bag-of-words classifiers.",
-      "samples": [
-        {
-          "text_id": "TXT_00112",
-          "post_text": "\"John Kasich thinks the Roots are \"\"offensive\"\"",
-          "sentiment_label": "Negative",
-          "pred_sentiment": "Negative",
-          "topic_category": "Community_Discussion",
-          "pred_topic": "Feature_Feedback"
-        },
-        {
-          "text_id": "TXT_01320",
-          "post_text": "is nobody going to see Ed Sheeran this Thursday or..",
-          "sentiment_label": "Neutral",
-          "pred_sentiment": "Positive",
-          "topic_category": "Community_Discussion",
-          "pred_topic": "Community_Discussion"
-        },
-        {
-          "text_id": "TXT_01365",
-          "post_text": "Amazon Prime Day, but instead it's just Wednesday.",
-          "sentiment_label": "Neutral",
-          "pred_sentiment": "Negative",
-          "topic_category": "Community_Discussion",
-          "pred_topic": "Community_Discussion"
-        },
-        {
-          "text_id": "TXT_01691",
-          "post_text": "Racist Mad Libs: Islam is _______ with _____",
-          "sentiment_label": "Neutral",
-          "pred_sentiment": "Negative",
-          "topic_category": "Community_Discussion",
-          "pred_topic": "Community_Discussion"
-        },
-        {
-          "text_id": "TXT_02739",
-          "post_text": "I'm gonna get the Moto G (3rd Gen)",
-          "sentiment_label": "Positive",
-          "pred_sentiment": "Neutral",
-          "topic_category": "Community_Discussion",
-          "pred_topic": "Community_Discussion"
-        }
-      ]
+      "count": 2,
+      "description": "Extremely brief posts under 7 words lacking discriminative context."
     }
   }
 }

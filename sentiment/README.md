@@ -6,8 +6,12 @@ This directory contains the **Sentiment & Semantic Understanding Layer** built f
 
 ## 📁 Folder Contents
 
-### 1. 📓 Interactive Jupyter Notebook
-- **[`Social_Engine_Semantic_Pipeline.ipynb`](Social_Engine_Semantic_Pipeline.ipynb)**: Complete end-to-end NLP Jupyter Notebook covering all 13 phases step-by-step:
+### 1. 📄 Executive Technical Report
+- **[`Social_Engine_Semantic_Understanding_Report.pdf`](Social_Engine_Semantic_Understanding_Report.pdf)** *(2.86 MB)*: Full competition technical report with 17 embedded figures, benchmark tables, error taxonomy, and executive analysis.
+- **[`Social_Engine_Semantic_Understanding_Report.md`](Social_Engine_Semantic_Understanding_Report.md)**: Markdown source document for the technical report.
+
+### 2. 📓 Interactive Jupyter Notebook
+- **[`Social_Engine_Semantic_Pipeline.ipynb`](Social_Engine_Semantic_Pipeline.ipynb)**: Complete end-to-end NLP Jupyter Notebook covering all 14 phases step-by-step:
   1. **Phase 1: Dataset Audit** — Distribution analysis, class imbalance, missing value checks.
   2. **Phase 2: Preprocessing** — Normalization, hashtag/emoji preservation, negation tagging, tokenization.
   3. **Phase 3: Leak-Free Stratified Split** — 80/10/10 train/val/test splits stratified by joint `(sentiment, topic)`.
@@ -22,13 +26,13 @@ This directory contains the **Sentiment & Semantic Understanding Layer** built f
   12. **Phase 12: Production Readiness** — Latency benchmarking, telemetry logging, and model export.
   13. **Phase 13: Executive Documentation** — Comprehensive final system summary.
 
-### 2. 🗄️ Dataset
+### 3. 🗄️ Dataset
 - **`Labeled_Social_NLP_Training_Data.csv`**: The official training dataset containing 9,000 labeled social media posts (`text_id`, `post_text`, `sentiment_label`, `topic_category`).
 
-### 3. 🖼️ Architecture & Diagrams
+### 4. 🖼️ Architecture & Diagrams
 - **`social_engine_structure.png`** / **`social_engine_structure-1.png`**: Multi-dimensional semantic architecture diagram.
 
-### 4. 🛠️ Utilities
+### 5. 🛠️ Utilities
 - **`generate_notebook.py`**: Python script used to construct the interactive notebook.
 
 ---

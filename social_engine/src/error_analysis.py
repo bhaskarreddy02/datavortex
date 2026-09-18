@@ -21,7 +21,7 @@ def perform_error_analysis(data_dir="social_engine/data",
                            outputs_dir="social_engine/outputs"):
     os.makedirs(outputs_dir, exist_ok=True)
     print("=" * 70)
-    print("PHASE 12: DEEP ERROR ANALYSIS & FAILURE TAXONOMY")
+    print("PHASE 11 & 12: SYSTEMATIC QUALITATIVE ERROR ANALYSIS")
     print("=" * 70)
     
     # 1. Load Test Set (Completely unseen during training & model selection)
@@ -45,6 +45,7 @@ def perform_error_analysis(data_dir="social_engine/data",
     # Flags for errors
     test_df['sentiment_error'] = test_df['sentiment_label'] != test_df['pred_sentiment']
     test_df['topic_error'] = test_df['topic_category'] != test_df['pred_topic']
+    test_df['word_count'] = test_df['cleaned_text'].apply(lambda x: len(str(x).split()))
     
     analysis = {
         'total_test_samples': len(test_df),
@@ -55,76 +56,106 @@ def perform_error_analysis(data_dir="social_engine/data",
         'failure_categories': {}
     }
     
-    # =========================================================================
-    # TAXONOMY CATEGORY 1: TOPIC MINORITY CLASS CONFUSION WITH COMMUNITY DISCUSSION
-    # =========================================================================
-    # When Account_Security or Technical_Issues or Feature_Feedback is predicted as Community_Discussion
+    print(f"Total Held-Out Test Samples    : {len(test_df)}")
+    print(f"Sentiment Classification Errors: {analysis['sentiment_errors_count']} ({analysis['sentiment_error_rate']}%)")
+    print(f"Topic Classification Errors    : {analysis['topic_errors_count']} ({analysis['topic_error_rate']}%)")
+    
+    # Helper to print formatted failure case
+    def print_case(title, post_text, actual, pred, conf, why):
+        print("\n" + "=" * 70)
+        print(f"FAILURE MODE: {title}")
+        print("=" * 70)
+        print(f"Text                          : \"{post_text}\"")
+        print(f"Actual label                  : {actual}")
+        print(f"Predicted label               : {pred}")
+        print(f"Confidence                    : {conf:.4f}")
+        print(f"Why the model may have failed : {why}")
+    
+    # 1. Sarcasm / Polarity Inversion
+    sarcasm_cases = test_df[
+        (test_df['sentiment_label'] == 'Negative') &
+        (test_df['pred_sentiment'] == 'Positive')
+    ]
+    analysis['failure_categories']['sarcasm_and_polarity_inversion'] = {
+        'count': len(sarcasm_cases),
+        'description': "Caustic negative sentiment phrased with superficial praise or laughing tokens."
+    }
+    if len(sarcasm_cases) > 0:
+        r = sarcasm_cases.iloc[0]
+        print_case(
+            "Sarcasm & Polarity Inversion (Lexical Irony)",
+            r['post_text'],
+            r['sentiment_label'],
+            r['pred_sentiment'],
+            r['sent_confidence'],
+            "The author uses superficially positive/mocking vocabulary (e.g. 'haha', 'great', 'joke'). Without pragmatic world knowledge, bag-of-words linear models aggregate positive token weights and miss the critical sarcastic intent."
+        )
+        
+    # 2. Minority Topic Absorption
     minority_swallowed = test_df[
         (test_df['topic_category'].isin(['Account_Security', 'Technical_Issues', 'Feature_Feedback'])) &
         (test_df['pred_topic'] == 'Community_Discussion')
     ]
-    analysis['failure_categories']['minority_swallowed_by_majority'] = {
+    analysis['failure_categories']['minority_topic_absorption'] = {
         'count': len(minority_swallowed),
-        'description': "Minority domain posts misclassified as generic Community Discussion due to domain vocabulary sparsity or conversational tone.",
-        'samples': minority_swallowed[['text_id', 'post_text', 'topic_category', 'pred_topic', 'topic_confidence']].head(5).to_dict(orient='records')
+        'description': "Specific domain problem posts misclassified as generic Community Discussion."
     }
-    
-    # =========================================================================
-    # TAXONOMY CATEGORY 2: SUBTLE SARCASM / MIXED POLARITY IN SENTIMENT
-    # =========================================================================
-    # True Negative predicted as Positive, or True Positive predicted as Negative
-    extreme_sentiment_flips = test_df[
-        ((test_df['sentiment_label'] == 'Negative') & (test_df['pred_sentiment'] == 'Positive')) |
-        ((test_df['sentiment_label'] == 'Positive') & (test_df['pred_sentiment'] == 'Negative'))
+    if len(minority_swallowed) > 0:
+        r = minority_swallowed.iloc[0]
+        print_case(
+            "Minority Topic Swallowed by Majority Class",
+            r['post_text'],
+            r['topic_category'],
+            r['pred_topic'],
+            r['topic_confidence'],
+            "The post articulates a domain-specific issue using conversational phrasing rather than explicit technical triggers (e.g. 'password reset', 'crash'). In the absence of decisive n-grams, the massive prior probability of Community_Discussion (86.1%) dominates."
+        )
+
+    # 3. Slang, Acronyms & Social Noise
+    slang_pattern = r'\b(?:tbh|smh|afaik|lol|lmao|idk|rn|fml|af|bc)\b'
+    slang_cases = test_df[
+        test_df['cleaned_text'].str.contains(slang_pattern, case=False, regex=True) &
+        test_df['sentiment_error']
     ]
-    analysis['failure_categories']['sentiment_polarity_inversions'] = {
-        'count': len(extreme_sentiment_flips),
-        'description': "Severe sentiment inversion (Negative <-> Positive) triggered by sarcasm, conflicting lexical cues (e.g. 'haha DUKE what a joke'), or polite complaint phrasing.",
-        'samples': extreme_sentiment_flips[['text_id', 'post_text', 'sentiment_label', 'pred_sentiment', 'sent_confidence']].head(5).to_dict(orient='records')
+    analysis['failure_categories']['slang_and_abbreviations'] = {
+        'count': len(slang_cases),
+        'description': "Informal shorthand and slang carrying compressed emotional valence."
     }
-    
-    # =========================================================================
-    # TAXONOMY CATEGORY 3: NEUTRAL VS POLAR BOUNDARY AMBIGUITY
-    # =========================================================================
-    # Neutral posts predicted as Positive/Negative or vice versa with low confidence (< 0.55)
-    neutral_ambiguity = test_df[
-        ((test_df['sentiment_label'] == 'Neutral') & (test_df['pred_sentiment'].isin(['Positive', 'Negative']))) |
-        ((test_df['sentiment_label'].isin(['Positive', 'Negative'])) & (test_df['pred_sentiment'] == 'Neutral'))
+    if len(slang_cases) > 0:
+        r = slang_cases.iloc[0]
+        print_case(
+            "Social Slang, Acronyms & Informal Shorthand",
+            r['post_text'],
+            r['sentiment_label'],
+            r['pred_sentiment'],
+            r['sent_confidence'],
+            "Colloquial acronyms and casual shorthand carry nuanced emotional intensity that is diluted or out-of-vocabulary in standard n-gram tokenizers, causing polarity attenuation."
+        )
+
+    # 4. Short Low-Context Posts
+    short_cases = test_df[
+        (test_df['word_count'] <= 6) &
+        (test_df['sentiment_error'] | test_df['topic_error'])
     ]
-    analysis['failure_categories']['neutral_boundary_ambiguity'] = {
-        'count': len(neutral_ambiguity),
-        'description': "Subjective boundary between neutral factual reporting and mild personal sentiment in conversational text.",
-        'samples': neutral_ambiguity.sort_values(by='sent_confidence').head(5)[['text_id', 'post_text', 'sentiment_label', 'pred_sentiment', 'sent_confidence']].to_dict(orient='records')
-    }
-    
-    # =========================================================================
-    # TAXONOMY CATEGORY 4: SHORT POSTS WITH LOW CONTEXT
-    # =========================================================================
-    test_df['word_count'] = test_df['cleaned_text'].apply(lambda x: len(str(x).split()))
-    short_post_errors = test_df[(test_df['word_count'] <= 10) & (test_df['sentiment_error'] | test_df['topic_error'])]
     analysis['failure_categories']['short_low_context_posts'] = {
-        'count': len(short_post_errors),
-        'description': "Extremely short social posts (<10 words) lacking sufficient discriminative tokens for bag-of-words classifiers.",
-        'samples': short_post_errors[['text_id', 'post_text', 'sentiment_label', 'pred_sentiment', 'topic_category', 'pred_topic']].head(5).to_dict(orient='records')
+        'count': len(short_cases),
+        'description': "Extremely brief posts under 7 words lacking discriminative context."
     }
-    
+    if len(short_cases) > 0:
+        r = short_cases.iloc[0]
+        print_case(
+            "Short Low-Context Posts (< 7 words)",
+            r['post_text'],
+            f"Sentiment={r['sentiment_label']}, Topic={r['topic_category']}",
+            f"Sentiment={r['pred_sentiment']}, Topic={r['pred_topic']}",
+            min(r['sent_confidence'], r['topic_confidence']),
+            "Extremely concise microblog posts contain only 1-4 content words, leaving the feature representation severely sparse and vulnerable to ambiguous priors."
+        )
+        
     out_file = os.path.join(outputs_dir, "error_analysis_report.json")
     with open(out_file, 'w', encoding='utf-8') as f:
         json.dump(analysis, f, indent=2)
-    print(f"Error analysis report successfully exported to {out_file}")
-    
-    print("\n" + "=" * 70)
-    print("ERROR TAXONOMY SUMMARY (HELD-OUT TEST SET)")
-    print("=" * 70)
-    print(f"Total Test Posts Analyzed      : {len(test_df)}")
-    print(f"Sentiment Classification Errors: {analysis['sentiment_errors_count']} ({analysis['sentiment_error_rate']}%)")
-    print(f"Topic Classification Errors    : {analysis['topic_errors_count']} ({analysis['topic_error_rate']}%)")
-    print("\nDominant Error Classes:")
-    for cat_name, cat in analysis['failure_categories'].items():
-        print(f"  • {cat_name:<32}: {cat['count']} cases")
-        print(f"    Rationale: {cat['description']}")
-        print(f"    Sample post: \"{cat['samples'][0]['post_text'][:80]}...\"")
-        print()
+    print(f"\nError analysis report successfully exported to {out_file}")
     return analysis
 
 if __name__ == '__main__':

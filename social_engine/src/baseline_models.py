@@ -53,7 +53,8 @@ def compute_metrics(y_true, y_pred, labels):
         'weighted_recall': float(rec_weighted),
         'weighted_f1': float(f1_weighted),
         'per_class': per_class,
-        'confusion_matrix': confusion_matrix(y_true, y_pred, labels=labels).tolist()
+        'confusion_matrix': confusion_matrix(y_true, y_pred, labels=labels).tolist(),
+        'classification_report': classification_report(y_true, y_pred, labels=labels, output_dict=True, zero_division=0)
     }
 
 def plot_confusion_matrix(cm, labels, title, save_path):
@@ -67,6 +68,31 @@ def plot_confusion_matrix(cm, labels, title, save_path):
     plt.yticks(rotation=0)
     plt.tight_layout()
     fig.savefig(save_path, dpi=300)
+    plt.close()
+
+def plot_feature_importance(model, feature_names, labels, title, save_path, n_top=10):
+    """
+    Extracts and visualizes top positive coefficients per class for linear models.
+    """
+    n_classes = len(labels)
+    fig, axes = plt.subplots(1, n_classes, figsize=(5 * n_classes, 4.5))
+    if n_classes == 1:
+        axes = [axes]
+        
+    palette = sns.color_palette("tab10", n_classes)
+    for idx, (label, color) in enumerate(zip(labels, palette)):
+        coefs = model.coef_[idx] if hasattr(model, 'coef_') else np.zeros(len(feature_names))
+        top_indices = coefs.argsort()[-n_top:][::-1]
+        top_words = feature_names[top_indices]
+        top_vals = coefs[top_indices]
+        
+        axes[idx].barh(top_words[::-1], top_vals[::-1], color=color, alpha=0.85, edgecolor='black')
+        axes[idx].set_title(f"Class: {label}", pad=10, fontweight='bold', fontsize=12)
+        axes[idx].set_xlabel("Coefficient Weight", fontweight='bold')
+        
+    plt.suptitle(title, y=1.03, fontsize=14, fontweight='bold')
+    plt.tight_layout()
+    fig.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.close()
 
 def run_baselines(data_dir="social_engine/data",
@@ -108,9 +134,9 @@ def run_baselines(data_dir="social_engine/data",
     
     print(f"TF-IDF Vocabulary Size: {len(tfidf.vocabulary_)} features")
     joblib.dump(tfidf, os.path.join(models_dir, "tfidf_vectorizer.joblib"))
+    feature_names = np.array(tfidf.get_feature_names_out())
     
     results = {'sentiment': {}, 'topic': {}}
-    saved_models = {}
     
     # =========================================================================
     # TASK 1: SENTIMENT CLASSIFICATION
@@ -164,6 +190,15 @@ def run_baselines(data_dir="social_engine/data",
         
     print(f"\n--> Best Sentiment Baseline (selected via Val F1): {best_sent_model_name} (Val F1: {best_sent_val_f1:.4f})")
     
+    # Feature Importance for Sentiment
+    plot_feature_importance(
+        sentiment_candidates['Logistic_Regression'],
+        feature_names,
+        sentiment_labels,
+        "Sentiment Feature Explainability (Top Informative TF-IDF N-grams)",
+        os.path.join(figures_dir, "feature_importance_sentiment.png")
+    )
+    
     # =========================================================================
     # TASK 2: TOPIC CLASSIFICATION (With Severe Class Imbalance Handling)
     # =========================================================================
@@ -215,6 +250,15 @@ def run_baselines(data_dir="social_engine/data",
         )
         
     print(f"\n--> Best Topic Baseline (selected via Val F1): {best_topic_model_name} (Val F1: {best_topic_val_f1:.4f})")
+    
+    # Feature Importance for Topics
+    plot_feature_importance(
+        topic_candidates['Logistic_Regression'],
+        feature_names,
+        topic_labels,
+        "Topic Category Feature Explainability (Top Informative TF-IDF N-grams)",
+        os.path.join(figures_dir, "feature_importance_topic.png")
+    )
     
     # Save all baseline evaluation results to JSON
     out_path = os.path.join(outputs_dir, "baseline_evaluation.json")

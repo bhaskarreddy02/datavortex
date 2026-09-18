@@ -10,7 +10,7 @@
 | :--- | :--- | :--- |
 | [**`round_1/`**](round_1/) | **Round 1: Data Restoration & Forensic Cleaning** | [`Social_Engine_Intake_Restoration.ipynb`](round_1/Social_Engine_Intake_Restoration.ipynb), [`EDA_Report.md`](round_1/EDA_Report.md) & [PDF](round_1/EDA_Report_FernandoIsFasterThanYou.pdf), and cleaned datasets |
 | [**`round_2/`**](round_2/) | **Round 2: SQL Analytics & Advanced Intelligence** | [`Round2_SQL_Analytics_and_Solutions.ipynb`](round_2/Round2_SQL_Analytics_and_Solutions.ipynb), [Solutions & Output Tables](round_2/Round2_SQL_Solutions_and_Outputs.md), and [SQL Scripts](round_2/round2_solutions.sql) |
-| [**`sentiment/`**](sentiment/) | **Sentiment & Semantic Understanding (NLP)** | [`Social_Engine_Semantic_Pipeline.ipynb`](sentiment/Social_Engine_Semantic_Pipeline.ipynb) (13 phases: multi-task transformer, topic discovery, NER, vector search), dataset, and diagrams |
+| [**`sentiment/`**](sentiment/) | **Sentiment & Semantic Understanding (NLP)** | [`Social_Engine_Semantic_Understanding_Report.pdf`](sentiment/Social_Engine_Semantic_Understanding_Report.pdf) & [Markdown](sentiment/Social_Engine_Semantic_Understanding_Report.md), [`Social_Engine_Semantic_Pipeline.ipynb`](sentiment/Social_Engine_Semantic_Pipeline.ipynb), and datasets |
 | [**`social_engine/`**](social_engine/) | **Modular Python NLP Production Engine** | Modular Python codebase (`src/`, `models/`, `outputs/`, `figures/`) |
 
 ---
